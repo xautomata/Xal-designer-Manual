@@ -1,0 +1,132 @@
+site_name: XAL Designer Documentation
+site_description: Documentation for the XAL Designer — the visual editor for XAUTOMATA automata
+site_url: https://www.xautomata.com/
+
+theme:
+  favicon: images/logo.png
+  name: material
+  features:
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.tooltips
+    - navigation.sections
+    - navigation.top
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - toc.follow
+    - header.autohide
+
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: blue
+      accent: indigo
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: indigo
+      accent: blue
+
+repo_name: XAL Designer Documentation
+
+plugins:
+  - mkdocstrings
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+
+nav:
+
+  - Home: index.md
+
+  # -------------------------------------------------------
+  # SECTION 1 — CONCEPTS
+  # The automaton mental model. No XML, no code.
+  # Target: all audiences.
+  # -------------------------------------------------------
+  - Concepts:
+      - What is an Automaton: concepts/automaton.md
+      - States and Transitions: concepts/states_transitions.md
+      - Clocks and Time: concepts/clocks.md
+      - Actions and Metrics: concepts/actions_metrics.md
+      - Automaton Families: concepts/families.md
+      - How Automata Relate to the Platform: concepts/platform_integration.md
+
+  # -------------------------------------------------------
+  # SECTION 2 — XAL DESIGNER
+  # Operational guide to the visual editor.
+  # Target: operators, administrators.
+  # -------------------------------------------------------
+  - XAL Designer:
+      - Overview: designer/overview.md
+
+      - Getting Started:
+          - Opening a File: designer/getting_started/opening_file.md
+          - The Interface: designer/getting_started/interface.md
+
+      - Process Overview:
+          - Reading the Graph: designer/overview_graph/reading.md
+          - Correlation Types: designer/overview_graph/correlation_types.md
+          - Opening an Automaton: designer/overview_graph/opening_automaton.md
+
+      - Working with Automata:
+          - Managing Automata: designer/automata/managing.md
+          - Global State Variables: designer/automata/global_state.md
+          - Clock Variables: designer/automata/clocks.md
+
+      - Working with States:
+          - Creating a State: designer/states/creating.md
+          - Configuring Actions: designer/states/actions.md
+          - Configuring Metrics: designer/states/metrics.md
+
+      - Working with Transitions:
+          - Creating a Transition: designer/transitions/creating.md
+          - Transition Types: designer/transitions/types.md
+          - Metric Value and Clocks: designer/transitions/metric_clocks.md
+          - Spawning Child Automata: designer/transitions/transition_new.md
+
+      - Saving and Publishing:
+          - Commit and Push: designer/publishing/commit.md
+
+  # -------------------------------------------------------
+  # SECTION 3 — XAL LANGUAGE REFERENCE
+  # Technical reference for the XAL format.
+  # Target: delivery team, developers.
+  # -------------------------------------------------------
+  - XAL Reference:
+      - File Structure: reference/file_structure.md
+      - Automaton: reference/automaton.md
+      - States: reference/states.md
+      - Transitions: reference/transitions.md
+      - Actions: reference/actions.md
+      - Metrics: reference/metrics.md
+      - Global State and Clocks: reference/global_state_clocks.md
+      - Parameter Passing: reference/parameters.md
+      - Query Syntax: reference/queries.md
+      - Annotated Examples:
+          - E-commerce Backoffice: reference/examples/ecommerce.md
+          - IT Patcher: reference/examples/patcher.md
+          - C2 Intercept: reference/examples/c2_intercept.md
+
+copyright:
+  All rights reserved
