@@ -1,6 +1,6 @@
 site_name: XAL Designer Documentation
 site_description: Documentation for the XAL Designer — the visual editor for XAUTOMATA automata
-site_url: https://www.xautomata.com/
+site_url: https://xautomata.github.io/Xal-designer-manual/
 
 theme:
   favicon: images/logo.png
@@ -36,8 +36,17 @@ theme:
 repo_name: XAL Designer Documentation
 
 plugins:
-  - mkdocstrings
   - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: it
+          name: Italiano
+          build: true
 
 markdown_extensions:
   - pymdownx.highlight:
