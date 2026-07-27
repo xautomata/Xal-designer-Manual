@@ -50,7 +50,7 @@ plugins:
 
 markdown_extensions:
   - pymdownx.highlight:
-      anchor_linenums: true
+      anchor_linenums: false
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - admonition
