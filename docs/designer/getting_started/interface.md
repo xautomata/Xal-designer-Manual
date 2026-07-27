@@ -35,7 +35,7 @@ The sidebar provides access to all editing panels and tools. Click an icon to op
 | Microchip | New State | Add a new state to the active automaton |
 | Recycle | New Transition | Add a new transition to the active automaton |
 | Store | Marketplace | *(Coming soon)* |
-| Wand | AI Assistant | *(Coming soon)* |
+| Wand | AI Assistant | Opens the Arianna chat panel |
 
 ---
 

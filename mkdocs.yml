@@ -117,6 +117,17 @@ nav:
       - Saving and Publishing:
           - Commit and Push: designer/publishing/commit.md
 
+      - AI Assistant (Arianna):
+          - Overview: designer/arianna/overview.md
+          - Setup — API Key: designer/arianna/setup.md
+          - Generating a Scenario: designer/arianna/generating_scenario.md
+          - Generating XAL: designer/arianna/generating_xal.md
+          - Updating XAL: designer/arianna/updating_xal.md
+          - Syncing the Scenario: designer/arianna/syncing_scenario.md
+          - Verifying Consistency: designer/arianna/verify_consistency.md
+          - Generate Scenario from XAL: designer/arianna/scenario_from_xal.md
+          - Chat Sessions: designer/arianna/sessions.md
+
   # -------------------------------------------------------
   # SECTION 3 — XAL LANGUAGE REFERENCE
   # Technical reference for the XAL format.

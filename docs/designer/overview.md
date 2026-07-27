@@ -32,7 +32,7 @@ The **left sidebar** provides navigation and editing tools. Its icons give acces
 | Microchip | Add new state |
 | Recycle | Add new transition |
 | Store | Marketplace *(coming soon)* |
-| Wand | AI Assistant *(coming soon)* |
+| Wand | AI Assistant (Arianna) |
 
 The **canvas** occupies the central area. It displays either the Process Overview graph or the interactive diagram of the currently open automaton.
 
