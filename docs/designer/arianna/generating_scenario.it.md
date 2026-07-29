@@ -10,7 +10,7 @@ Puoi avviare la generazione di uno scenario da due punti di ingresso:
 
 **Da una sessione libera** — apri il pannello sessioni nell'intestazione della chat e crea una nuova sessione. Questa sessione parte senza un file collegato. Descrivi il processo, genera lo scenario, e Arianna assegnerà un nome file suggerito quando consegna il risultato. Il file `.xal` verrà creato più tardi, quando clicchi **Generate XAL**.
 
-**Da un file esistente** — clicca con il tasto destro su un file `.xal` nel **Repository Explorer** e seleziona **New chat** (o **Open with chat** se esiste già una sessione). La sessione è pre-collegata al file e pre-intestata con il nome del file. Il file non deve avere contenuto.
+**Da un file esistente** — clicca con il tasto destro su un file `.xal` nel **Repository Explorer** e seleziona **New chat** (o **Open chat** se esiste già una sessione). La sessione è pre-collegata al file e pre-intestata con il nome del file. Il file non deve avere contenuto.
 
 ---
 
@@ -31,14 +31,14 @@ Puoi descrivere tutto in una volta o costruire lo scenario attraverso più scamb
 
 Quando Arianna considera la descrizione sufficiente per produrre uno scenario minimale, il pulsante **Generate Scenario** diventa attivo nella toolbar della chat.
 
-Clicca **Generate Scenario**. Arianna produce uno scenario strutturato in formato Markdown e lo consegna come card collassabile nella chat. Contemporaneamente:
+Clicca **Generate Scenario**. Arianna produce uno scenario strutturato in formato Markdown. Contemporaneamente:
 
 - il file satellite `.scenario.md` viene creato nel repository explorer, accanto al file `.xal`
 - il **tab scenario** si apre nell'editor, mostrando lo scenario renderizzato
 
-![La scenario card in chat e il tab scenario nell'editor](../../images/designer/arianna/generating_scenario_result.png)
+![Il tab scenario nell'editor dopo la generazione](../../images/designer/arianna/generating_scenario_result.png)
 /// caption
-Fig.1 - La scenario card (sinistra) e il tab scenario aperto (destra) dopo la generazione (screenshot in attesa)
+Fig.1 - Il tab scenario dopo la generazione
 ///
 
 ---

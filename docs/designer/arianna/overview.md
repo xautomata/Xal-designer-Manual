@@ -45,14 +45,14 @@ The context menu entry changes depending on whether a session already exists for
 
 | Entry | Condition | Effect |
 |---|---|---|
-| **Open with chat** | A session already exists for this file | Switches the active session to this file; opens the scenario tab if a scenario is present |
+| **Open chat** | A session already exists for this file | Switches the active session to this file; opens the scenario tab if a scenario is present |
 | **New chat** | No session exists for this file | Creates a new session linked to this file; the session title is pre-filled with the file name |
 
 The same entries are available on `.scenario.md` files — both the scenario and the XAL share the same session.
 
 ![Context menu on an XAL file](../../images/designer/arianna/context_menu.png)
 /// caption
-Fig.1 - The "Open with chat" entry in the Repository Explorer context menu (screenshot pending)
+Fig.1 - The "Open chat" entry in the Repository Explorer context menu
 ///
 
 ---
@@ -75,7 +75,7 @@ Use Focus when you want to concentrate the workspace on a single file — for ex
 
 ![The scenario tab with the Focus button highlighted](../../images/designer/arianna/scenario_tab_focus.png)
 /// caption
-Fig.2 - The scenario tab. The Focus button is in the top-right corner of the tab header (screenshot pending)
+Fig.2 - The scenario tab. The Focus button is in the top-right corner of the tab header
 ///
 
 ---
@@ -92,4 +92,4 @@ Once a chat session is open, Arianna can help you with the following tasks. Each
 | [Syncing the Scenario](syncing_scenario.md) | You have edited the XAL manually and want to update the scenario to match |
 | [Verifying Consistency](verify_consistency.md) | You want to check that scenario and XAL are semantically aligned |
 | [Generate Scenario from XAL](scenario_from_xal.md) | You have an existing XAL file with no scenario and want to reconstruct one |
-| [Chat Sessions](sessions.md) | Managing multiple sessions, chat modes, and guided flows |
+| [Chat Sessions](sessions.md) | Managing multiple sessions, skills, and guided flows |

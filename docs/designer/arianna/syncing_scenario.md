@@ -9,8 +9,10 @@ When you edit an automaton directly in the Designer — adding states, changing 
 Sync Scenario is useful when:
 
 - you have refined the automaton graph manually after a generation and want the scenario to remain an accurate description
-- you have received an XAL file from another team member and want to produce a scenario for it
 - you want to keep the two artefacts aligned before committing
+
+!!! note "Generating a scenario for a file that has none"
+    If you have an XAL file with no associated scenario, use [Generate Scenario from XAL](scenario_from_xal.md) instead — Sync Scenario requires an existing scenario tab to be accessible.
 
 ---
 
@@ -24,7 +26,6 @@ The precision of the update depends on what is available:
 |---|---|---|
 | XAL has been modified since the last generation | Existing scenario + diff of the XAL changes | Targeted update — only the affected sections of the scenario change |
 | First sync of the session (no diff baseline) | Existing scenario + full current XAL | Full-context update — Arianna uses the existing scenario as a style and structure reference |
-| No scenario exists yet | Full current XAL only | Full reconstruction — the scenario is written from scratch |
 
 ---
 

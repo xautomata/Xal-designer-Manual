@@ -16,11 +16,11 @@ Questo flusso è utile quando:
 
 ## Avviare il flusso
 
-Apri una sessione chat per il file XAL (tasto destro → **Open with chat** o **New chat**). Se il file non ha ancora uno scenario, l'area chat mostra una singola call-to-action:
+Apri una sessione chat per il file XAL (tasto destro → **Open chat** o **New chat**). Se il file non ha ancora uno scenario, l'area chat mostra una singola call-to-action:
 
 **Generate scenario from XAL**
 
-Cliccala. Arianna legge l'intero contenuto XAL e genera uno scenario strutturato. La scenario card appare in chat, il file satellite `.scenario.md` viene creato e il tab scenario si apre.
+Cliccala. Arianna legge l'intero contenuto XAL e genera uno scenario strutturato. Il file satellite `.scenario.md` viene creato e il tab scenario si apre.
 
 ---
 

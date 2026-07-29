@@ -8,13 +8,15 @@ Quando lo scenario cambia dopo che l'XAL è già stato generato, usa **Update XA
 
 Il pulsante nella barra delle azioni del tab scenario cambia etichetta e colore in base allo stato di allineamento dei due artefatti:
 
-| Etichetta pulsante | Colore | Significato |
-|---|---|---|
-| **Generate XAL** | Verde | Non esiste ancora un file XAL, oppure l'XAL esistente è stato caricato manualmente senza una storia di generazione |
-| **Update XAL** | Verde | Scenario e XAL sono allineati — il pulsante è disponibile per rigenerare se necessario |
-| **Update XAL** | Arancione | Lo scenario è stato modificato dall'ultima generazione — l'XAL non è aggiornato |
+| Etichetta pulsante | Colore | Stato | Significato |
+|---|---|---|---|
+| **Generate XAL** | Verde | Abilitato | Non esiste ancora un file XAL (`NO_XAL`), oppure l'XAL esistente è stato caricato manualmente senza una storia di generazione (`OUTDATED_UPLOAD`) |
+| **Update XAL** | Verde | Disabilitato | Scenario e XAL sono allineati — nessuna azione necessaria |
+| **Update XAL** | Giallo | Abilitato | Lo scenario è stato modificato dall'ultima generazione — l'XAL non è aggiornato (`SCENARIO_AHEAD`) |
+| **Update XAL** | Giallo | Disabilitato | L'XAL è stato modificato manualmente dopo la generazione — usa **Sync Scenario** invece (`XAL_MODIFIED`) |
+| **Update XAL** | Giallo | Abilitato | Entrambi gli artefatti sono stati modificati indipendentemente — è richiesta una conferma prima di procedere (`DIVERGED`) |
 
-Il colore arancione è un segnale visivo che i due artefatti non sono sincronizzati. Clicca **Update XAL** per riallineare l'XAL allo scenario.
+Il colore giallo è un segnale visivo che i due artefatti non sono sincronizzati. Clicca **Update XAL** per riallineare l'XAL allo scenario.
 
 ---
 

@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/concepts/actions_metrics/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/actions_metrics/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/actions_metrics/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/concepts/automaton/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/automaton/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/automaton/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/concepts/clocks/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/clocks/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/clocks/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/concepts/families/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/families/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/families/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/concepts/platform_integration/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/platform_integration/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/platform_integration/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/concepts/states_transitions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/states_transitions/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/states_transitions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/overview/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/overview/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/overview/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/generating_scenario/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/generating_scenario/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/generating_scenario/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/generating_xal/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/generating_xal/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/generating_xal/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/overview/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/overview/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/overview/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/scenario_from_xal/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/scenario_from_xal/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/scenario_from_xal/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/sessions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/sessions/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/sessions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/setup/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/setup/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/setup/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/syncing_scenario/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/syncing_scenario/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/syncing_scenario/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/updating_xal/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/updating_xal/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/updating_xal/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/arianna/verify_consistency/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/verify_consistency/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/verify_consistency/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/automata/clocks/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/automata/clocks/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/automata/clocks/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/automata/global_state/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/automata/global_state/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/automata/global_state/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/automata/managing/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/automata/managing/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/automata/managing/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/getting_started/interface/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/getting_started/interface/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/getting_started/interface/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/getting_started/opening_file/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/getting_started/opening_file/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/getting_started/opening_file/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/correlation_types/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/correlation_types/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/correlation_types/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/opening_automaton/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/opening_automaton/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/opening_automaton/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/reading/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/reading/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/reading/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/publishing/commit/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/publishing/commit/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/publishing/commit/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/publishing/uncommitted/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/publishing/uncommitted/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/publishing/uncommitted/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/states/actions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/states/actions/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/states/actions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/states/creating/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/states/creating/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/states/creating/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/states/metrics/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/states/metrics/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/states/metrics/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/transitions/creating/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/transitions/creating/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/creating/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/transitions/metric_clocks/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/transitions/metric_clocks/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/metric_clocks/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/transitions/transition_new/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/transitions/transition_new/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/transition_new/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/designer/transitions/types/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/transitions/types/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/types/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/actions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/actions/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/actions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/automaton/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/automaton/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/automaton/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/file_structure/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/file_structure/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/file_structure/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/global_state_clocks/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/global_state_clocks/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/global_state_clocks/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/metrics/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/metrics/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/metrics/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/parameters/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/parameters/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/parameters/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/queries/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/queries/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/queries/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/states/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/states/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/states/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/transitions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/transitions/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/transitions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/examples/c2_intercept/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/examples/c2_intercept/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/examples/c2_intercept/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/examples/ecommerce/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/examples/ecommerce/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/examples/ecommerce/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/reference/examples/patcher/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/examples/patcher/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/examples/patcher/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/concepts/actions_metrics/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/actions_metrics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/actions_metrics/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/concepts/automaton/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/automaton/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/automaton/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/concepts/clocks/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/clocks/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/clocks/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/concepts/families/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/families/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/families/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/concepts/platform_integration/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/platform_integration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/platform_integration/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/concepts/states_transitions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/concepts/states_transitions/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/concepts/states_transitions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/overview/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/overview/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/generating_scenario/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/generating_scenario/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/generating_scenario/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/generating_xal/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/generating_xal/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/generating_xal/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/overview/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/overview/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/scenario_from_xal/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/scenario_from_xal/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/scenario_from_xal/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/sessions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/sessions/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/sessions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/setup/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/setup/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/setup/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/syncing_scenario/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/syncing_scenario/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/syncing_scenario/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/updating_xal/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/updating_xal/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/updating_xal/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/verify_consistency/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/arianna/verify_consistency/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/arianna/verify_consistency/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/automata/clocks/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/automata/clocks/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/automata/clocks/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/automata/global_state/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/automata/global_state/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/automata/global_state/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/automata/managing/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/automata/managing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/automata/managing/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/getting_started/interface/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/getting_started/interface/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/getting_started/interface/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/getting_started/opening_file/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/getting_started/opening_file/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/getting_started/opening_file/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/correlation_types/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/correlation_types/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/correlation_types/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/opening_automaton/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/opening_automaton/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/opening_automaton/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/reading/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/overview_graph/reading/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/overview_graph/reading/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/publishing/commit/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/publishing/commit/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/publishing/commit/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/publishing/uncommitted/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/publishing/uncommitted/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/publishing/uncommitted/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/states/actions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/states/actions/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/states/actions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/states/creating/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/states/creating/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/states/creating/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/states/metrics/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/states/metrics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/states/metrics/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/creating/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/creating/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/transitions/creating/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/metric_clocks/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/metric_clocks/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/transitions/metric_clocks/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/transition_new/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/transition_new/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/transitions/transition_new/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/types/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/designer/transitions/types/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/designer/transitions/types/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/actions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/actions/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/actions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/automaton/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/automaton/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/automaton/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/file_structure/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/file_structure/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/file_structure/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/global_state_clocks/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/global_state_clocks/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/global_state_clocks/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/metrics/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/metrics/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/metrics/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/parameters/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/parameters/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/parameters/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/queries/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/queries/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/queries/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/states/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/states/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/states/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/transitions/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/transitions/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/transitions/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/examples/c2_intercept/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/examples/c2_intercept/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/examples/c2_intercept/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/examples/ecommerce/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/examples/ecommerce/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/examples/ecommerce/"/>
+    </url>
+    <url>
+        <loc>https://xautomata.github.io/Xal-designer-manual/it/reference/examples/patcher/</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://xautomata.github.io/Xal-designer-manual/it/reference/examples/patcher/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://xautomata.github.io/Xal-designer-manual/reference/examples/patcher/"/>
+    </url>
+</urlset>

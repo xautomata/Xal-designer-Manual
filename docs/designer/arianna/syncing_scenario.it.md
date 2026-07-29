@@ -9,8 +9,10 @@ Quando modifichi un automa direttamente nel Designer — aggiungendo stati, camb
 Sync Scenario è utile quando:
 
 - hai affinato il grafo dell'automa manualmente dopo una generazione e vuoi che lo scenario rimanga una descrizione accurata
-- hai ricevuto un file XAL da un altro membro del team e vuoi produrne uno scenario
 - vuoi mantenere i due artefatti allineati prima di committare
+
+!!! note "Generare uno scenario per un file che non ne ha"
+    Se hai un file XAL senza uno scenario associato, usa [Genera scenario da XAL](scenario_from_xal.md) — Sync Scenario richiede che il tab scenario sia già presente e aperto.
 
 ---
 
@@ -24,7 +26,6 @@ La precisione dell'aggiornamento dipende da ciò che è disponibile:
 |---|---|---|
 | L'XAL è stato modificato dall'ultima generazione | Scenario esistente + diff delle modifiche XAL | Aggiornamento mirato — cambiano solo le sezioni dello scenario interessate |
 | Primo sync della sessione (nessuna baseline di diff) | Scenario esistente + intero XAL corrente | Aggiornamento con contesto completo — Arianna usa lo scenario esistente come riferimento di stile e struttura |
-| Nessuno scenario ancora presente | Intero XAL corrente | Ricostruzione completa — lo scenario viene scritto da zero |
 
 ---
 

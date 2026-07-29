@@ -45,14 +45,14 @@ La voce del menu contestuale cambia a seconda che esista già una sessione per q
 
 | Voce | Condizione | Effetto |
 |---|---|---|
-| **Open with chat** | Esiste già una sessione per questo file | Passa alla sessione attiva per questo file; apre il tab scenario se lo scenario è presente |
+| **Open chat** | Esiste già una sessione per questo file | Passa alla sessione attiva per questo file; apre il tab scenario se lo scenario è presente |
 | **New chat** | Non esiste nessuna sessione per questo file | Crea una nuova sessione collegata al file; il titolo viene pre-compilato con il nome del file |
 
 Le stesse voci sono disponibili sui file `.scenario.md` — sia lo scenario che l'XAL condividono la stessa sessione.
 
 ![Menu contestuale su un file XAL](../../images/designer/arianna/context_menu.png)
 /// caption
-Fig.1 - La voce "Open with chat" nel menu contestuale del Repository Explorer (screenshot in attesa)
+Fig.1 - La voce "Open chat" nel menu contestuale del Repository Explorer
 ///
 
 ---
@@ -75,7 +75,7 @@ Usa Focus quando vuoi concentrare il workspace su un unico file — per esempio,
 
 ![Il tab scenario con il pulsante Focus evidenziato](../../images/designer/arianna/scenario_tab_focus.png)
 /// caption
-Fig.2 - Il tab scenario. Il pulsante Focus si trova nell'angolo in alto a destra dell'intestazione del tab (screenshot in attesa)
+Fig.2 - Il tab scenario. Il pulsante Focus si trova nell'angolo in alto a destra dell'intestazione del tab
 ///
 
 ---
@@ -92,4 +92,4 @@ Una volta aperta una sessione chat, Arianna può aiutarti con le seguenti attivi
 | [Sincronizzare lo scenario](syncing_scenario.md) | Hai modificato l'XAL manualmente e vuoi aggiornare lo scenario di conseguenza |
 | [Verificare la consistenza](verify_consistency.md) | Vuoi controllare che scenario e XAL siano semanticamente allineati |
 | [Generare uno scenario dall'XAL](scenario_from_xal.md) | Hai un file XAL esistente senza scenario e vuoi ricostruirne uno |
-| [Sessioni chat](sessions.md) | Gestire più sessioni, modalità chat e flussi guidati |
+| [Sessioni chat](sessions.md) | Gestire più sessioni, skill e flussi guidati |

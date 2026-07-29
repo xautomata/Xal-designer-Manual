@@ -16,11 +16,11 @@ This flow is useful when:
 
 ## Starting the flow
 
-Open a chat session for the XAL file (right-click → **Open with chat** or **New chat**). If the file has no scenario yet, the chat area shows a single call-to-action:
+Open a chat session for the XAL file (right-click → **Open chat** or **New chat**). If the file has no scenario yet, the chat area shows a single call-to-action:
 
 **Generate scenario from XAL**
 
-Click it. Arianna reads the full XAL content and generates a structured scenario. The scenario card appears in the chat, the `.scenario.md` satellite file is created, and the scenario tab opens.
+Click it. Arianna reads the full XAL content and generates a structured scenario. The `.scenario.md` satellite file is created and the scenario tab opens.
 
 ---
 

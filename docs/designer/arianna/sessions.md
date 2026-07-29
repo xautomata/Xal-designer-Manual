@@ -18,17 +18,12 @@ Click any session in the list to switch to it. If the incoming session has a sce
 ## Managing file sessions
 
 ### Creating a session
-Right-click any `.xal` or `.scenario.md` file in the **Repository Explorer** and select **New chat**. One session per file — if a session already exists for that file, **Open with chat** appears instead and the existing session is reactivated.
+Right-click any `.xal` or `.scenario.md` file in the **Repository Explorer** and select **New chat**. One session per file — if a session already exists for that file, **Open chat** appears instead and the existing session is reactivated.
 
 ### Resetting a session
-Two reset options are available from the session menu:
+Select **Reset history** from the session menu to clear the chat messages while keeping the linked file, the scenario, and the scenario tab intact.
 
-| Option | What it removes | What it keeps |
-|---|---|---|
-| **Reset history** | Chat messages | Linked file, scenario, scenario tab |
-| **Reset everything** | Chat messages + scenario + `.scenario.md` file | Linked file only |
-
-Use *Reset history* to free up context tokens when the conversation has become long but the scenario is still good. Use *Reset everything* to start over on the same file.
+Use this to free up context tokens when the conversation has become long but the scenario is still good.
 
 ### Deleting a session
 Select **Delete** from the session menu. The session and its history are removed; the `.scenario.md` and `.xal` files in the repository are not affected.
@@ -37,29 +32,33 @@ Select **Delete** from the session menu. The session and its history are removed
 
 ## System sessions
 
-Two sessions are always present in the panel and cannot be deleted or renamed. They are created automatically on first launch and restored if the browser storage is cleared.
+!!! note "Coming soon"
+    System sessions are not yet available. This section describes the planned behaviour.
+
+Two sessions will always be present in the panel and cannot be deleted or renamed. They will be created automatically on first launch and restored if the browser storage is cleared.
 
 | Session | What it does |
 |---|---|
 | **Interface Guide** | Answers questions about the XAL Designer interface — panels, buttons, workflows, and navigation |
 | **XAL Guide** | Answers questions about the XAL language — syntax, state and transition types, actions, metrics, and parameters |
+| **Java Action Guide** *(planned)* | Guides you through implementing the Java methods behind XAL actions — generates stub code and suggests implementations based on a curated cookbook of patterns |
 
 These sessions have no linked file and no scenario tab. They operate independently of whatever file you are currently working on — use them to look something up without interrupting your current session.
 
 ---
 
-## Chat modes
+## Skills
 
-Each file session has a **mode selector** in the chat header. The mode controls the instructions Arianna receives and the type of output it produces. The correct mode is selected automatically based on the current state of the artefacts, but you can change it manually at any time.
+Each file session has a **skill selector** in the chat header. A skill is a predefined mode that controls the instructions Arianna receives and the type of output it produces. The correct skill is selected automatically based on the current state of the artefacts, but you can change it manually at any time.
 
-| Mode | Auto-selected when | What Arianna does |
+| Skill | Auto-selected when | What Arianna does |
 |---|---|---|
 | **Build scenario** | No scenario exists yet | Guides you through describing the automaton and generates a structured scenario |
 | **Update scenario** | Scenario exists, XAL is absent or out of date | Helps you refine the scenario before (re)generating the XAL |
 | **Consulenza** | Scenario and XAL are aligned | Answers operational questions about the automaton — what a state means, what triggers a transition, how to adjust a threshold — without changing artefacts unless you explicitly ask |
 
 !!! info
-    Switching mode does not lose the conversation history. The next message you send will simply use the new mode's instructions.
+    Switching skill does not lose the conversation history. The next message you send will simply use the new skill's instructions.
 
 ---
 

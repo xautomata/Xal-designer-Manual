@@ -10,7 +10,7 @@ You can start a scenario generation from two entry points:
 
 **From a free session** — open the sessions panel in the chat header and create a new session. This session starts with no linked file. Describe the process, generate the scenario, and Arianna will assign a suggested filename when it delivers the result. The `.xal` file is created later, when you click **Generate XAL**.
 
-**From an existing file** — right-click a `.xal` file in the **Repository Explorer** and select **New chat** (or **Open with chat** if a session already exists). The session is pre-linked to that file and pre-titled with the file name. The file does not need to have content.
+**From an existing file** — right-click a `.xal` file in the **Repository Explorer** and select **New chat** (or **Open chat** if a session already exists). The session is pre-linked to that file and pre-titled with the file name. The file does not need to have content.
 
 ---
 
@@ -31,14 +31,14 @@ You can describe everything at once or build up the scenario through several exc
 
 When Arianna considers the description sufficient to produce a minimal scenario, the **Generate Scenario** button becomes active in the chat toolbar.
 
-Click **Generate Scenario**. Arianna produces a structured scenario in Markdown format and delivers it as a collapsible card in the chat. At the same time:
+Click **Generate Scenario**. Arianna produces a structured scenario in Markdown format. At the same time:
 
 - the `.scenario.md` satellite file is created in the repository explorer alongside the `.xal` file
 - the **scenario tab** opens in the editor, showing the rendered scenario
 
-![The scenario card in chat and the scenario tab in the editor](../../images/designer/arianna/generating_scenario_result.png)
+![The scenario tab in the editor after generation](../../images/designer/arianna/generating_scenario_result.png)
 /// caption
-Fig.1 - The scenario card (left) and the open scenario tab (right) after generation (screenshot pending)
+Fig.1 - The scenario tab after generation
 ///
 
 ---

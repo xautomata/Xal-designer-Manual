@@ -8,13 +8,15 @@ When the scenario changes after the XAL has already been generated, use **Update
 
 The action button in the scenario tab changes label and colour based on the alignment state of the two artefacts:
 
-| Button label | Colour | Meaning |
-|---|---|---|
-| **Generate XAL** | Green | No XAL file exists yet, or the existing XAL was uploaded manually without a generation history |
-| **Update XAL** | Green | Scenario and XAL are aligned — the button is available to regenerate if needed |
-| **Update XAL** | Orange | The scenario has been modified since the last generation — the XAL is out of date |
+| Button label | Colour | State | Meaning |
+|---|---|---|---|
+| **Generate XAL** | Green | Enabled | No XAL file exists yet (`NO_XAL`), or the existing XAL was uploaded manually without a generation history (`OUTDATED_UPLOAD`) |
+| **Update XAL** | Green | Disabled | Scenario and XAL are aligned — no action needed |
+| **Update XAL** | Yellow | Enabled | The scenario has been modified since the last generation — the XAL is out of date (`SCENARIO_AHEAD`) |
+| **Update XAL** | Yellow | Disabled | The XAL has been manually edited after generation — use **Sync Scenario** instead (`XAL_MODIFIED`) |
+| **Update XAL** | Yellow | Enabled | Both artefacts have been modified independently — a confirmation is required before proceeding (`DIVERGED`) |
 
-The orange colour is a visual signal that the two artefacts are out of sync. Click **Update XAL** to bring the XAL back in line with the scenario.
+The yellow colour is a visual signal that the two artefacts are out of sync. Click **Update XAL** to bring the XAL back in line with the scenario.
 
 ---
 

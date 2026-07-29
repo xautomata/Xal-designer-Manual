@@ -19,7 +19,7 @@ When both steps complete successfully, the XAL file is created (or overwritten) 
 
 ![The scenario tab action bar during XAL generation](../../images/designer/arianna/generating_xal_progress.png)
 /// caption
-Fig.1 - Status messages during XAL generation (screenshot pending)
+Fig.1 - Status messages during XAL generation
 ///
 
 ---

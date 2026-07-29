@@ -19,8 +19,7 @@ Quando entrambi i passi si completano con successo, il file XAL viene creato (o 
 
 ![La barra delle azioni del tab scenario durante la generazione XAL](../../images/designer/arianna/generating_xal_progress.png)
 /// caption
-Fig.1 - I messaggi di stato durante la generazione XAL (screenshot in attesa)
-///
+Fig.1 - I messaggi di stato durante la generazione XAL ///
 
 ---
 

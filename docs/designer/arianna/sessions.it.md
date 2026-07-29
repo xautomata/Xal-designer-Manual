@@ -18,17 +18,12 @@ Clicca qualsiasi sessione nell'elenco per passarvi. Se la sessione di destinazio
 ## Gestire le sessioni file
 
 ### Creare una sessione
-Clicca con il tasto destro su qualsiasi file `.xal` o `.scenario.md` nel **Repository Explorer** e seleziona **New chat**. Una sola sessione per file — se esiste già una sessione per quel file, compare **Open with chat** e la sessione esistente viene riattivata.
+Clicca con il tasto destro su qualsiasi file `.xal` o `.scenario.md` nel **Repository Explorer** e seleziona **New chat**. Una sola sessione per file — se esiste già una sessione per quel file, compare **Open chat** e la sessione esistente viene riattivata.
 
 ### Resettare una sessione
-Sono disponibili due opzioni di reset dal menu della sessione:
+Seleziona **Reset history** dal menu della sessione per cancellare i messaggi della chat mantenendo intatti il file collegato, lo scenario e il tab scenario.
 
-| Opzione | Cosa rimuove | Cosa conserva |
-|---|---|---|
-| **Reset history** | I messaggi della chat | Il file collegato, lo scenario, il tab scenario |
-| **Reset everything** | I messaggi + lo scenario + il file `.scenario.md` | Solo il file collegato |
-
-Usa *Reset history* per liberare token di contesto quando la conversazione è diventata lunga ma lo scenario è ancora valido. Usa *Reset everything* per ricominciare da capo sullo stesso file.
+Usalo per liberare token di contesto quando la conversazione è diventata lunga ma lo scenario è ancora valido.
 
 ### Eliminare una sessione
 Seleziona **Delete** dal menu della sessione. La sessione e la sua cronologia vengono rimosse; i file `.scenario.md` e `.xal` nel repository non vengono toccati.
@@ -37,29 +32,33 @@ Seleziona **Delete** dal menu della sessione. La sessione e la sua cronologia ve
 
 ## Sessioni di sistema
 
-Due sessioni sono sempre presenti nel pannello e non possono essere eliminate né rinominate. Vengono create automaticamente al primo avvio e ripristinate se la memoria del browser viene svuotata.
+!!! note "Coming soon"
+    Le sessioni di sistema non sono ancora disponibili. Questa sezione descrive il comportamento pianificato.
+
+Due sessioni saranno sempre presenti nel pannello e non potranno essere eliminate né rinominate. Verranno create automaticamente al primo avvio e ripristinate se la memoria del browser viene svuotata.
 
 | Sessione | Cosa fa |
 |---|---|
 | **Interface Guide** | Risponde a domande sull'interfaccia del XAL Designer — pannelli, pulsanti, flussi di lavoro e navigazione |
 | **XAL Guide** | Risponde a domande sul linguaggio XAL — sintassi, tipi di stati e transizioni, azioni, metriche e parametri |
+| **Java Action Guide** *(pianificata)* | Ti guida nell'implementazione dei metodi Java dietro le action XAL — genera stub di codice e suggerisce implementazioni basandosi su un cookbook curato di pattern |
 
 Queste sessioni non hanno un file collegato né un tab scenario. Operano indipendentemente dal file su cui stai lavorando — usale per cercare informazioni senza interrompere la sessione corrente.
 
 ---
 
-## Modalità chat
+## Skill
 
-Ogni sessione file ha un **selettore di modalità** nell'intestazione della chat. La modalità controlla le istruzioni che Arianna riceve e il tipo di output che produce. La modalità corretta viene selezionata automaticamente in base allo stato degli artefatti, ma puoi cambiarla manualmente in qualsiasi momento.
+Ogni sessione file ha un **selettore di skill** nell'intestazione della chat. Una skill è una modalità predefinita che controlla le istruzioni che Arianna riceve e il tipo di output che produce. La skill corretta viene selezionata automaticamente in base allo stato degli artefatti, ma puoi cambiarla manualmente in qualsiasi momento.
 
-| Modalità | Auto-selezionata quando | Cosa fa Arianna |
+| Skill | Auto-selezionata quando | Cosa fa Arianna |
 |---|---|---|
 | **Build scenario** | Non esiste ancora nessuno scenario | Ti guida nella descrizione dell'automa e genera uno scenario strutturato |
 | **Update scenario** | Lo scenario esiste, l'XAL è assente o non aggiornato | Ti aiuta ad affinare lo scenario prima di (ri)generare l'XAL |
 | **Consulenza** | Scenario e XAL sono allineati | Risponde a domande operative sull'automa — cosa significa uno stato, cosa attiva una transizione, come regolare una soglia — senza modificare gli artefatti a meno che tu non lo chieda esplicitamente |
 
 !!! info
-    Cambiare modalità non cancella la cronologia della conversazione. Il prossimo messaggio che invii utilizzerà semplicemente le istruzioni della nuova modalità.
+    Cambiare skill non cancella la cronologia della conversazione. Il prossimo messaggio che invii utilizzerà semplicemente le istruzioni della nuova skill.
 
 ---
 
