@@ -1,6 +1,6 @@
 site_name: XAL Designer Documentation
 site_description: Documentation for the XAL Designer — the visual editor for XAUTOMATA automata
-site_url: https://xautomata.github.io/Xal-designer-manual/
+site_url: https://xautomata.github.io/Xal-designer-Manual/
 
 theme:
   favicon: images/logo.png
