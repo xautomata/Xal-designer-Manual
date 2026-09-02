@@ -54,8 +54,8 @@ Ogni sessione file ha un **selettore di skill** nell'intestazione della chat. Un
 | Skill | Auto-selezionata quando | Cosa fa Arianna |
 |---|---|---|
 | **Build scenario** | Non esiste ancora nessuno scenario | Ti guida nella descrizione dell'automa e genera uno scenario strutturato |
-| **Update scenario** | Lo scenario esiste, l'XAL è assente o non aggiornato | Ti aiuta ad affinare lo scenario prima di (ri)generare l'XAL |
-| **Consulenza** | Scenario e XAL sono allineati | Risponde a domande operative sull'automa — cosa significa uno stato, cosa attiva una transizione, come regolare una soglia — senza modificare gli artefatti a meno che tu non lo chieda esplicitamente |
+| **Update scenario** | Lo scenario esiste | Ti aiuta ad affinare lo scenario e può (ri)generare l'XAL; se l'XAL esiste, risponde anche a domande operative — ma può ancora modificare gli artefatti |
+| **Consulenza** | **Mai auto-selezionata** — solo scelta manuale | Risponde a domande operative sull'automa senza poter triggerare la generazione dello scenario né altre azioni UI |
 
 !!! info
     Cambiare skill non cancella la cronologia della conversazione. Il prossimo messaggio che invii utilizzerà semplicemente le istruzioni della nuova skill.
@@ -68,7 +68,7 @@ Diverse azioni in Arianna attivano **flussi guidati** — sequenze di passi che 
 
 ### Flusso post-generazione (Generate scenario from XAL)
 
-Dopo aver generato uno scenario da un XAL esistente, Arianna invia in chat un prompt che ti invita a verificare la consistenza, con un pulsante **Verify Consistency** inline nel messaggio. Dopo la verifica, un secondo messaggio stabilisce la direzione di lavoro per la sessione (vedi [Generare uno scenario dall'XAL](scenario_from_xal.md)).
+Dopo aver generato uno scenario da un XAL esistente, Arianna invia in chat un prompt che ti invita a verificare la consistenza, con un pulsante **Verify Scenario Consistency** inline nel messaggio. Dopo la verifica, un secondo messaggio stabilisce la direzione di lavoro per la sessione (vedi [Generare uno scenario dall'XAL](scenario_from_xal.md)).
 
 ### Prompt post-sync
 

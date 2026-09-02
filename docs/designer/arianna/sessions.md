@@ -54,8 +54,8 @@ Each file session has a **skill selector** in the chat header. A skill is a pred
 | Skill | Auto-selected when | What Arianna does |
 |---|---|---|
 | **Build scenario** | No scenario exists yet | Guides you through describing the automaton and generates a structured scenario |
-| **Update scenario** | Scenario exists, XAL is absent or out of date | Helps you refine the scenario before (re)generating the XAL |
-| **Consulenza** | Scenario and XAL are aligned | Answers operational questions about the automaton — what a state means, what triggers a transition, how to adjust a threshold — without changing artefacts unless you explicitly ask |
+| **Update scenario** | A scenario exists | Helps you refine the scenario and can (re)generate the XAL; if the XAL also exists, it also answers operational questions — but it can still modify artefacts |
+| **Consulenza** | Never auto-selected — manual choice only | Answers operational questions about the automaton without being able to trigger scenario generation or any other UI actions |
 
 !!! info
     Switching skill does not lose the conversation history. The next message you send will simply use the new skill's instructions.
@@ -68,7 +68,7 @@ Several actions in Arianna trigger **guided flows** — sequences of steps that 
 
 ### Post-generation flow (Generate scenario from XAL)
 
-After generating a scenario from an existing XAL, Arianna sends a prompt in the chat inviting you to verify consistency, with an inline **Verify Consistency** button. After the check, a second message sets the working direction for the session (see [Generate Scenario from XAL](scenario_from_xal.md)).
+After generating a scenario from an existing XAL, Arianna sends a prompt in the chat inviting you to verify consistency, with an inline **Verify Scenario Consistency** button. After the check, a second message sets the working direction for the session (see [Generate Scenario from XAL](scenario_from_xal.md)).
 
 ### Post-sync prompt
 
