@@ -15,7 +15,7 @@ SELECT <column> FROM <table> WHERE groupLabel = 'this.GROUPLABEL'
 The most common form reads the global state status of another automaton:
 
 ```sql
-SELECT GLOBALSTATE_STATUS FROM Scenario_Follower_Manager WHERE groupLabel = 'this.GROUPLABEL'
+SELECT GLOBALSTATE_STATUS FROM scenario_FollowerManager WHERE groupLabel = 'this.GROUPLABEL'
 ```
 
 ---
@@ -34,7 +34,7 @@ Examples:
 
 | File | Automaton | Table name |
 |---|---|---|
-| `scenario.xal` | `Follower_Manager` | `scenario_Follower_Manager` |
+| `scenario.xal` | `FollowerManager` | `scenario_FollowerManager` |
 | `patcher.xal` | `Dispatcher` | `patcher_Dispatcher` |
 
 Upper and lower case do not matter in the table name. `patcher_Dispatcher`, `PATCHER_DISPATCHER` and `Patcher_dispatcher` read the same table.

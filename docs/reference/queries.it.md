@@ -15,7 +15,7 @@ SELECT <column> FROM <table> WHERE groupLabel = 'this.GROUPLABEL'
 La forma più comune legge lo stato del global state di un altro automa:
 
 ```sql
-SELECT GLOBALSTATE_STATUS FROM Scenario_Follower_Manager WHERE groupLabel = 'this.GROUPLABEL'
+SELECT GLOBALSTATE_STATUS FROM scenario_FollowerManager WHERE groupLabel = 'this.GROUPLABEL'
 ```
 
 ---
@@ -34,7 +34,7 @@ Esempi:
 
 | File | Automa | Nome tabella |
 |---|---|---|
-| `scenario.xal` | `Follower_Manager` | `scenario_Follower_Manager` |
+| `scenario.xal` | `FollowerManager` | `scenario_FollowerManager` |
 | `patcher.xal` | `Dispatcher` | `patcher_Dispatcher` |
 
 Maiuscole e minuscole non contano nel nome della tabella. `patcher_Dispatcher`, `PATCHER_DISPATCHER` e `Patcher_dispatcher` leggono la stessa tabella.

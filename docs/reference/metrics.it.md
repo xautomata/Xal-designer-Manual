@@ -14,7 +14,7 @@ Le Metric sono definite all'interno dell'elemento `<Functions>` e rappresentano 
     Path="/wms/src/WaterFallConnector.java"/>
   <Query>
     SELECT GLOBALSTATE_STATUS
-    FROM Scenario_Follower_Manager
+    FROM scenario_FollowerManager
     WHERE groupLabel = 'this.GROUPLABEL'
   </Query>
   <Input>
