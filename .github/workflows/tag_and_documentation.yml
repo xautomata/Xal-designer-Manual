@@ -12,12 +12,15 @@ permissions:
 jobs:
   create_tag:
     runs-on: ubuntu-latest
+    outputs:
+      version_changed: ${{ steps.version_changed.outputs.VERSION_CHANGED }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           # Full history with tags: a shallow clone has none, git describe returns "none"
-          # and the job tries to recreate an existing tag, skipping the documentation deploy.
+          # and the job tries to recreate an existing tag on every push.
+          # The tags pushed below are lightweight, hence --tags in "Get current tag".
           fetch-depth: 0
 
       - name: Read version from file
@@ -26,7 +29,7 @@ jobs:
 
       - name: Get current tag
         id: get_current_tag
-        run: echo "TAG=$(git describe --abbrev=0 2>/dev/null || echo 'none')" >> $GITHUB_OUTPUT
+        run: echo "TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo 'none')" >> $GITHUB_OUTPUT
 
       - name: Check if version has changed
         id: version_changed
@@ -51,6 +54,8 @@ jobs:
   documentation:
     runs-on: ubuntu-latest
     needs: create_tag
+    # The site is published only on a version bump: plain pushes to main stay unpublished.
+    if: needs.create_tag.outputs.version_changed == 'true'
     steps:
       - uses: actions/checkout@v4
 
