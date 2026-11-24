@@ -119,7 +119,7 @@ nav:
 
       - AI Assistant (Arianna):
           - Overview: designer/arianna/overview.md
-          - Setup — API Key: designer/arianna/setup.md
+          - Setup: designer/arianna/setup.md
           - Generating a Scenario: designer/arianna/generating_scenario.md
           - Generating XAL: designer/arianna/generating_xal.md
           - Updating XAL: designer/arianna/updating_xal.md
