@@ -6,48 +6,71 @@ States are the nodes of the automaton diagram. You can create a new state at any
 
 ## Adding a state
 
-Click the **microchip icon** in the left sidebar. A new state node named `NewNode` appears immediately on the canvas, and the configuration panel opens on the right.
+1. Click **New State** in the left sidebar. The configuration panel opens on the right, with the name `NewNode`.
+2. In the **Name** field, type the name of the state.
+
+The state appears on the canvas as soon as the name is valid. From then on the panel saves every change by itself: there is no save button.
 
 ![New state on canvas](../../images/designer/states/new_state.png)
 /// caption
-Fig.1 - A newly created state on the canvas
+Fig.1 - A new state on the canvas, with its configuration panel
 ///
 
-The state is created immediately — there is no separate confirmation step. As soon as you type a name, the node updates on the canvas in real time.
+To give up before the state appears, click **×** in the panel header. Nothing is added.
 
 ---
 
 ## Naming a state
 
-In the **Name** field of the Metadata section, replace `NewNode` with your chosen identifier. State names must be unique within the automaton.
+The name must follow these rules:
 
-If you enter a name that is already in use, the panel displays a validation message asking you to choose a different name.
+- it is required;
+- it contains only letters and numbers, with no spaces or underscores;
+- it is not `NewNode`;
+- it is not used by another state of the same automaton.
+
+If the name breaks a rule, the panel shows a message next to the field. An existing state keeps your other changes, but saves them only when the name is valid again.
+
+When you rename a state, the transitions connected to it follow the new name.
 
 ---
 
 ## Setting the state type
 
-Use the **Type** selector to mark the state as **Initial** or **Final**.
+Use the **Type** selector to mark the state as **Initial** or **Final**. Leave both unselected for an intermediate state.
 
-- Select **Initial** to make this the starting state of the automaton. An automaton can have only one initial state.
-- Select **Final** to mark this as a terminal state. An automaton can have multiple final states. When the automaton reaches a final state, it stops processing.
+- **Initial** makes this the starting state of the automaton. An automaton has only one initial state: if you select **Initial** on another state, that state becomes the initial one and the previous one becomes an intermediate state.
+- **Final** marks a terminal state. An automaton can have several final states. When the automaton reaches a final state, it stops processing.
 
-Leave both options unselected for intermediate states.
+You cannot change the type of the initial state, and you cannot delete it. To replace it, select **Initial** on another state.
+
+**Reset** clears the name and the type. On the initial state, it leaves the type as it is.
+
+The **star** next to the state name marks the state as starred (see [States](../../reference/states.md#starred-states)).
+
+---
+
+## Saving and automatic changes
+
+While the panel saves a change, **Applying changes…** appears at the top right of the canvas, and a thin line runs under the top bar.
+
+When you open a state, the designer can adjust some values of its Action or Metric so that the form can show them. A notification tells you: **Action was changed** or **Metric was changed**. See [Actions](actions.md) and [Metrics](metrics.md).
+
+To undo a change, click the undo button at the bottom of the canvas or press **Ctrl+Z** (see [The Interface](../getting_started/interface.md#canvas)).
 
 ---
 
 ## Moving states on the canvas
 
-Drag a state node to reposition it on the canvas. The layout is not constrained — place nodes wherever makes the diagram easiest to read.
+Drag a state node to reposition it on the canvas. The layout is not constrained: place nodes wherever makes the diagram easiest to read.
 
 !!! note
-    Moving a node counts as a change. The tab indicator will show a dot, signaling uncommitted modifications.
+    Moving a node counts as a change, and the tab shows a dot. If you only moved nodes, the [Commit and Push](../publishing/commit.md) dialog marks the automaton as **layout only**.
 
 ---
 
 ## Deleting a state
 
-To delete a state, select it on the canvas and click the **trash icon** in the top-right corner of the configuration panel.
+Select the state on the canvas, click the **trash icon** in the top-right corner of the panel and confirm with **OK**.
 
-!!! warning
-    Deleting a state also removes all transitions connected to it. This action cannot be undone within the designer session.
+Deleting a state also removes all the transitions connected to it. To get them back, press **Ctrl+Z**.

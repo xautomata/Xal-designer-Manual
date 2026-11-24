@@ -6,36 +6,60 @@ Le transizioni collegano gli stati e definiscono le condizioni in base alle qual
 
 ## Aggiungere una transizione
 
-Fai clic sull'**icona riciclo** nella barra laterale sinistra per entrare in modalità creazione transizione. Poi disegna una connessione tra due stati nel canvas.
+1. Fai clic su **New Transition** nella barra laterale sinistra. Il pannello di configurazione si apre sulla destra, con i campi vuoti.
+2. Nella sezione **Metadata**, scegli l'**Input State** (da dove parte la transizione) e l'**Output State** (dove arriva). Le opzioni sono gli stati dell'automa corrente.
 
-Il pannello di configurazione si apre sulla destra, mostrando la sezione **Metadata** con gli stati di input e output pre-compilati.
+La transizione compare nel canvas appena sono impostati entrambi gli stati. Da lì in poi il pannello salva da solo ogni modifica: non c'è un pulsante di salvataggio.
 
-La transizione viene creata immediatamente. La sua configurazione può essere modificata nel pannello in qualsiasi momento.
+![Nuova transizione nel canvas](../../images/designer/transitions/new_transition.png)
+/// caption
+Fig.1 - Una nuova transizione da waitingIdle a relocated, con il suo pannello di configurazione
+///
 
----
-
-## Impostare gli stati di input e output
-
-Nella sezione **Metadata**, usa i menu a discesa **Input State** e **Output State** per impostare la sorgente e la destinazione della transizione.
-
-Entrambi i campi sono obbligatori. Le opzioni disponibili sono tutti gli stati definiti nell'automa corrente.
+Per rinunciare prima che la transizione compaia, fai clic su **×** nell'intestazione del pannello. Non viene aggiunto niente.
 
 !!! note
-    Una transizione può avere lo stesso stato sia come input che come output. Questo crea un **self-loop** — l'automa rimane in quello stato fino a quando non viene soddisfatta una condizione diversa.
+    Una transizione può avere lo stesso stato sia come input sia come output. Questo crea un **self-loop**, disegnato come un piccolo anello sullo stato: l'automa rimane in quello stato finché non si verifica una condizione diversa.
 
 ---
 
-## Selezionare il tipo di transizione
+## Configurare la transizione
 
-Il tipo di transizione viene determinato automaticamente in base ai campi compilati:
+Il pannello ha tre sezioni:
 
-- Se imposti un **Target Automaton** nella sezione Parameters, la transizione diventa una **TransitionNew** o **TransitionNewMulti**.
-- Altrimenti, è una **Transition** standard.
+| Sezione | Contenuto | Vedi |
+|---|---|---|
+| **Metadata** | Stato di input e di output, **Metric Value**, **Target Min Wait**, **Ignore Min Wait** | [Metric Value e Clock](metric_clocks.md) |
+| **Clocks** | Vincoli sui clock e reset dei clock | [Metric Value e Clock](metric_clocks.md) |
+| **Parameters** | **Target File**, **Target Automaton** e le variabili passate all'automa figlio | [Istanziare automi figli](transition_new.md) |
 
-Per una descrizione completa di ogni tipo e quando usarlo, vedi [Transition Types](types.md).
+Mentre il pannello salva una modifica, in alto a destra nel canvas compare **Applying changes…**. Per annullare una modifica, premi **Ctrl+Z**, anche su una transizione appena creata.
+
+---
+
+## Il tipo di transizione
+
+Il titolo del pannello mostra il tipo della transizione. Su una transizione nuova, il tipo segue i campi che compili:
+
+- **Transition**: il tipo standard.
+- **TransitionNew**: hai impostato un **Target File** e un **Target Automaton** nella sezione Parameters.
+- **TransitionNewMulti**: hai impostato anche le variabili di loop.
+
+Per una descrizione completa di ogni tipo e di quando usarlo, vedi [Transition Types](types.md).
+
+---
+
+## Le transizioni nel canvas
+
+Ogni transizione è una freccia dallo stato di input allo stato di output:
+
+- l'etichetta mostra il **Metric Value**;
+- una transizione che avvia un automa figlio mostra **✚** e il nome dell'automa di destinazione (**✚✚** per una TransitionNewMulti);
+- il simbolo dell'orologio segna un vincolo sui clock, **↺** un reset dei clock. Passa il mouse sulla freccia per vederli;
+- due transizioni in direzioni opposte tra gli stessi stati sono disegnate come due frecce separate.
 
 ---
 
 ## Eliminare una transizione
 
-Seleziona una transizione nel canvas facendo clic sul suo arco o sulla sua etichetta, poi fai clic sull'**icona cestino** nell'angolo in alto a destra del pannello di configurazione.
+Seleziona una transizione nel canvas facendo clic sul suo arco o sulla sua etichetta, fai clic sull'**icona cestino** nell'angolo in alto a destra del pannello e conferma con **Delete**. Per recuperarla, premi **Ctrl+Z**.
