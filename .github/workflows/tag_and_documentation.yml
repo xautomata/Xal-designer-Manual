@@ -15,6 +15,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # Full history with tags: a shallow clone has none, git describe returns "none"
+          # and the job tries to recreate an existing tag, skipping the documentation deploy.
+          fetch-depth: 0
 
       - name: Read version from file
         id: get_version
