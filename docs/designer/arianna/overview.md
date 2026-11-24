@@ -108,7 +108,7 @@ On the right, three round buttons:
 
 | Button | Effect |
 |---|---|
-| **Show changes since the last commit** | Shows the changes of the scenario, compared with an earlier version. It appears once there is more than one version |
+| **Show changes since the last commit** | Shows the changes of the scenario, compared with an earlier version. It appears once there is more than one version. See [Scenario History](scenario_history.md) |
 | **Edit scenario** | Opens the scenario as text. Click **Save** to keep the changes or **Cancel** to drop them. While you edit, the toolbar shows only these two buttons |
 | **Focus** | Concentrates the workspace on this file (see below) |
 
@@ -141,4 +141,5 @@ Once a chat session is open, Arianna can help you with the following tasks. Each
 | [Syncing the Scenario](syncing_scenario.md) | You have edited the XAL manually and want to update the scenario to match |
 | [Verifying Consistency](verify_consistency.md) | You want to check that scenario and XAL are semantically aligned |
 | [Generate Scenario from XAL](scenario_from_xal.md) | You have an existing XAL file with no scenario and want to reconstruct one |
+| [Scenario History](scenario_history.md) | You want to see how the scenario changed since the last commit, or bring back an earlier version |
 | [Chat Sessions](sessions.md) | Managing multiple sessions, skills, and guided flows |

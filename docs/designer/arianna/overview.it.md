@@ -108,7 +108,7 @@ A destra, tre pulsanti rotondi:
 
 | Pulsante | Effetto |
 |---|---|
-| **Show changes since the last commit** | Mostra le modifiche dello scenario rispetto a una versione precedente. Compare quando c'è più di una versione |
+| **Show changes since the last commit** | Mostra le modifiche dello scenario rispetto a una versione precedente. Compare quando c'è più di una versione. Vedi [Cronologia dello scenario](scenario_history.md) |
 | **Edit scenario** | Apre lo scenario come testo. Clicca **Save** per tenere le modifiche o **Cancel** per scartarle. Mentre modifichi, la toolbar mostra solo questi due pulsanti |
 | **Focus** | Concentra il workspace su questo file (vedi sotto) |
 
@@ -141,4 +141,5 @@ Una volta aperta una sessione chat, Arianna può aiutarti con le seguenti attivi
 | [Sincronizzare lo scenario](syncing_scenario.md) | Hai modificato l'XAL manualmente e vuoi aggiornare lo scenario di conseguenza |
 | [Verificare la consistenza](verify_consistency.md) | Vuoi controllare che scenario e XAL siano semanticamente allineati |
 | [Generare uno scenario dall'XAL](scenario_from_xal.md) | Hai un file XAL esistente senza scenario e vuoi ricostruirne uno |
+| [Cronologia dello scenario](scenario_history.md) | Vuoi vedere come è cambiato lo scenario dall'ultimo commit, o riportare indietro una versione precedente |
 | [Sessioni chat](sessions.md) | Gestire più sessioni, skill e flussi guidati |

@@ -124,6 +124,7 @@ nav:
           - Generating XAL: designer/arianna/generating_xal.md
           - Updating XAL: designer/arianna/updating_xal.md
           - Syncing the Scenario: designer/arianna/syncing_scenario.md
+          - Scenario History: designer/arianna/scenario_history.md
           - Verifying Consistency: designer/arianna/verify_consistency.md
           - Generate Scenario from XAL: designer/arianna/scenario_from_xal.md
           - Chat Sessions: designer/arianna/sessions.md
