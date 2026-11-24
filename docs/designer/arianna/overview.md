@@ -29,11 +29,13 @@ patch_oracle.scenario.md    ← the scenario (satellite, same base name)
 
 The scenario file is a **satellite** of the XAL file: it always lives in the same directory and shares the same base name, with a `.scenario.md` extension instead of `.xal`. This co-location is structural — the link between the two is never stored explicitly; it is derived from the path.
 
-The scenario file can exist before the XAL file (Arianna creates it as soon as the scenario is ready), but it can never exist in a different directory. Moving or renaming the XAL file requires updating the scenario file path accordingly.
+The scenario file can exist before the XAL file (Arianna creates it as soon as the scenario is ready), but it can never exist in a different directory. When you rename or move an XAL file that is not committed yet, the scenario file moves with it and the chat session follows.
 
 ### One scenario tab at a time
 
 The editor allows only one scenario tab open at a time. This is intentional: the scenario tab and the active chat session are always in sync, and having multiple scenario tabs open simultaneously would break that contract. If you switch to a different chat session, the current scenario tab is closed and the new session's scenario (if any) is opened in its place.
+
+While you are editing the scenario, you can't switch to another one: the Designer shows the *Unsaved scenario* warning. Save or cancel the edit first.
 
 ---
 
@@ -45,10 +47,12 @@ The context menu entry changes depending on whether a session already exists for
 
 | Entry | Condition | Effect |
 |---|---|---|
-| **Open chat** | A session already exists for this file | Switches the active session to this file; opens the scenario tab if a scenario is present |
-| **New chat** | No session exists for this file | Creates a new session linked to this file; the session title is pre-filled with the file name |
+| **Open chat** | The file's chat already has messages | Opens the AI Assistant panel on that chat; opens the scenario tab if a scenario is present |
+| **New chat** | The file has no chat yet, or its chat is still empty | Creates a chat linked to this file, named after the file. An empty chat is reopened, not duplicated |
 
-The same entries are available on `.scenario.md` files — both the scenario and the XAL share the same session.
+The same entry is available on `.scenario.md` files: the scenario and the XAL share the same chat.
+
+Files that are not committed yet also have **Download** and **Remove file** in the menu, and an XAL file has **Rename** too.
 
 ![Context menu on an XAL file](../../images/designer/arianna/context_menu.png)
 /// caption
@@ -57,26 +61,71 @@ Fig.1 - The "Open chat" entry in the Repository Explorer context menu
 
 ---
 
+## The chat panel
+
+### Arianna's introduction
+
+A new, empty chat starts with a short introduction: what Arianna does, and what you need to tell her. She knows XAL and the Xautomata runtime, but not your systems, endpoints, and domain rules. The introduction disappears with your first message.
+
+The [User Guide](sessions.md#user-guide) chat shows a shorter introduction.
+
+![A new chat with Arianna's introduction](../../images/designer/arianna/chat_empty_intro.png)
+/// caption
+Fig.2 - A new chat: Arianna introduces herself
+///
+
+### Full screen
+
+Long answers, such as a consistency report, are easier to read in full screen. Click **Full screen** in the chat header: the chat covers the whole window, with the same header, messages, and input box. To go back, click **Exit full screen** at the top right, or press **Esc**.
+
+Nothing is lost when you switch: your unsent message, the skill, and an answer in progress stay as they are.
+
+![The chat in full screen](../../images/designer/arianna/chat_fullscreen.png)
+/// caption
+Fig.3 - The chat in full screen. The button at the top right brings it back to the side panel
+///
+
+---
+
 ## The scenario tab
 
-When Arianna generates a scenario, the Designer opens a **scenario tab** in the editor. It displays the structured scenario in rendered Markdown and exposes the one-shot action buttons — **Generate XAL**, **Verify Consistency**, and **Sync Scenario** — directly below the content area.
+When Arianna generates a scenario, the Designer opens a **scenario tab** in the editor. It shows the scenario in rendered Markdown, with a toolbar above it.
+
+### The toolbar
+
+The toolbar shows only the actions that apply to the current state of scenario and XAL.
+
+On the left:
+
+- the **status badge**: an icon that tells you whether scenario and XAL are aligned. Move the mouse over it to read the state;
+- **Generate XAL** or **Update XAL**, when the XAL is missing or behind the scenario: see [Generating XAL](generating_xal.md) and [Updating XAL](updating_xal.md);
+- **Sync Scenario**, when the XAL was edited by hand: see [Syncing the Scenario](syncing_scenario.md);
+- **Verify XAL Consistency**, when there is an XAL to check: see [Verifying Consistency](verify_consistency.md).
+
+The table in [Updating XAL](updating_xal.md#when-update-xal-appears) lists every state with its badge and buttons.
+
+On the right, three round buttons:
+
+| Button | Effect |
+|---|---|
+| **Show changes since the last commit** | Shows the changes of the scenario, compared with an earlier version. It appears once there is more than one version |
+| **Edit scenario** | Opens the scenario as text. Click **Save** to keep the changes or **Cancel** to drop them. While you edit, the toolbar shows only these two buttons |
+| **Focus** | Concentrates the workspace on this file (see below) |
+
+![The scenario tab with its toolbar](../../images/designer/arianna/scenario_tab_focus.png)
+/// caption
+Fig.4 - The scenario tab. Here the scenario changed after the last generation: blue arrow and Update XAL. The mouse is on Focus
+///
 
 ### The Focus button
 
-The scenario tab header includes a **Focus** button. Clicking it:
+Clicking **Focus**:
 
-1. Closes all tabs belonging to other XAL files
+1. Closes the automaton tabs of other XAL files
 2. Opens all automata defined in the linked XAL file
+3. Shows the scenario tab and opens the AI Assistant panel on the file's chat, creating the chat if there is none
 
 Use Focus when you want to concentrate the workspace on a single file — for example, after switching between several automata and wanting a clean view of the one you are currently working on.
-
-!!! note
-    Focus is only available in the scenario tab header, not in the context menu. If the scenario is in edit mode with unsaved changes, Focus is blocked until the changes are saved or discarded.
-
-![The scenario tab with the Focus button highlighted](../../images/designer/arianna/scenario_tab_focus.png)
-/// caption
-Fig.2 - The scenario tab. The Focus button is in the top-right corner of the tab header
-///
 
 ---
 
