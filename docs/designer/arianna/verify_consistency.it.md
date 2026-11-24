@@ -1,6 +1,6 @@
 # Verificare la consistenza
 
-**Verify Consistency** esegue un confronto sistematico tra scenario e file XAL, controlla che ogni elemento descritto nello scenario abbia un costrutto corrispondente nell'XAL e segnala le eventuali discrepanze.
+**Verify XAL Consistency** confronta lo scenario con il file XAL: Arianna controlla che ogni elemento descritto nello scenario abbia un costrutto corrispondente nell'XAL e segnala le differenze.
 
 ---
 
@@ -16,25 +16,41 @@ Esegui una verifica di consistenza:
 
 ## Avviare la verifica
 
-Clicca **Verify Consistency** nella barra delle azioni del tab scenario. Arianna esegue la verifica come operazione one-shot fuori dalla cronologia normale della chat e consegna il report come messaggio in chat.
+Clicca **Verify XAL Consistency** nella toolbar del tab scenario. Il pulsante c'è quando esistono sia lo scenario sia l'XAL. Mentre Arianna lavora, la [progress card](sessions.md#mentre-arianna-lavora) mostra *Verifying consistency...*; clicca **Cancel** per fermare la verifica.
 
-Il report copre:
+Il report arriva come messaggio in chat. Poi il pulsante sparisce dalla toolbar: il report resta valido finché né lo scenario né l'XAL cambiano. Quando uno dei due cambia, il pulsante ricompare.
 
-- stati e transizioni presenti in un artefatto ma assenti nell'altro
-- nomi di azioni o metriche che non corrispondono tra scenario e XAL
-- vincoli di clock descritti nello scenario ma non riflessi nelle transizioni
-- variabili di global state elencate nello scenario che sono assenti o tipizzate diversamente nell'XAL
+![Un report di consistenza in chat](../../images/designer/arianna/consistency_report.png)
+/// caption
+Fig.1 - Il report e il pulsante Update scenario from report
+///
 
-!!! info "Bias verso la coerenza"
-    La verifica di consistenza di Arianna è calibrata per evitare falsi positivi. Quando una discrepanza è ambigua — per esempio, una descrizione che potrebbe corrispondere a più di un elemento XAL — non viene segnalata come errore. Vengono riportate solo le incongruenze chiare.
+---
+
+## Cosa contiene il report
+
+Per ogni automa, Arianna confronta lo scenario con l'XAL: gli stati (iniziale e finali), le transizioni, le query verso altri automi, i clock e i loro reset, i Global State. Segnala anche i difetti strutturali dell'XAL, per esempio uno stato finale che un altro automa interroga ma non potrà mai vedere.
+
+Ogni differenza ricade in una di queste categorie:
+
+| Categoria | Significato |
+|---|---|
+| **Precisazioni** | L'XAL risolve qualcosa che lo scenario lasciava aperto, per esempio un controllo "ogni 30 secondi" scritto come tempo di attesa. Non è un problema: ti dice come è stata risolta l'ambiguità. |
+| **Inconsistenze** | Qualcosa nell'XAL che non corrisponde a nessuna lettura ragionevole dello scenario, o che non può funzionare. Sono problemi. |
+| **Mancanze** | Qualcosa che lo scenario descrive e che nell'XAL non ha corrispondenza, spesso tolto mentre si rifiniva l'automa nel Designer. |
+| **Convenzioni tecniche** | Parametri standard mancanti dove un automa ne crea un altro. |
+
+Una categoria senza voci non compare nel report.
+
+La verifica non controlla la sintassi dell'XAL, già validata quando l'XAL viene generato, né gli altri file XAL che l'automa richiama.
 
 ---
 
 ## Agire sul report
 
-Leggi il report in chat e decidi come risolvere ogni punto. A seconda di quale artefatto deve essere considerato la fonte di verità:
+Per ogni voce, decidi quale dei due file è giusto:
 
-- **Lo scenario è corretto → l'XAL deve cambiare:** modifica l'automa nel Designer e riesegui la pipeline di generazione, oppure correggi l'XAL manualmente.
-- **L'XAL è corretto → lo scenario deve cambiare:** chiedi ad Arianna in chat di aggiornare le sezioni interessate, oppure usa [Sync Scenario](syncing_scenario.md).
+- **L'XAL è giusto, lo scenario deve cambiare**: clicca **Update scenario from report** sotto il report. Arianna aggiorna lo scenario per correggere quello che il report elenca; l'XAL non cambia. Se l'XAL è stato modificato a mano, puoi usare anche [Sync Scenario](syncing_scenario.md).
+- **Lo scenario è giusto, l'XAL deve cambiare**: modifica l'automa nel Designer, oppure descrivi la modifica ad Arianna e poi usa [Update XAL](updating_xal.md).
 
-Puoi chiedere ad Arianna di aiutarti a risolvere qualsiasi punto del report — il contesto della chat contiene già entrambi gli artefatti dopo la verifica.
+**Update scenario from report** funziona solo sull'ultimo report, e solo finché lo scenario è quello verificato. Con la skill **Consult** è disattivato: passa a **Build** o **Update** per usarlo.

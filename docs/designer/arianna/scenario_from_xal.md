@@ -10,46 +10,39 @@ This flow is useful when:
 
 - you are working with a legacy XAL file that was created manually or by another tool
 - you received an XAL file and want a human-readable description of what it does
-- you want to start a [consultation session](sessions.md#chat-modes) on an existing automaton
+- you want to ask Arianna questions about an existing automaton
 
 ---
 
 ## Starting the flow
 
-Open a chat session for the XAL file (right-click → **Open chat** or **New chat**). If the file has no scenario yet, the chat area shows a single call-to-action:
+Right-click the XAL file in the **Repository Explorer** and select **New chat** (or **Open chat**). If the file has automata but no scenario yet, the chat shows *This XAL file has no associated scenario yet.* and the **Generate scenario from XAL** button in place of the input box.
 
-**Generate scenario from XAL**
+![The Generate scenario from XAL button](../../images/designer/arianna/scenario_from_xal_cta.png)
+/// caption
+Fig.1 - A chat on an XAL file with no scenario
+///
 
-Click it. Arianna reads the full XAL content and generates a structured scenario. The `.scenario.md` satellite file is created and the scenario tab opens.
+Click **Generate scenario from XAL**. Arianna reads the whole XAL and writes a structured scenario. The `.scenario.md` file is created next to the `.xal` file and the scenario tab opens.
+
+!!! tip "Only questions, no scenario"
+    If you only want to ask about the XAL, select the **Consult** skill in the chat header. The input box comes back and Arianna answers about the XAL's states and transitions without creating a scenario. See [Skills](sessions.md#skills).
 
 ---
 
 ## The guided verification flow
 
-Reconstructing a scenario from XAL is a reverse operation — Arianna infers intent from structure, which can introduce imprecisions, especially in complex automata with non-obvious logic.
+Reconstructing a scenario from an XAL is a reverse operation: Arianna infers the intent from the structure, and this can introduce inaccuracies, especially in complex automata. After the scenario is generated, Arianna guides you through a check:
 
-To help you catch these issues immediately, Arianna automatically initiates a guided flow after the scenario is generated:
-
-**Step 1 — Post-generation prompt**
-
-Arianna sends a message suggesting that the first generated scenario may contain inaccuracies, with a **Verify Consistency** button inline in the message. You do not need to find the button in the scenario tab — it is right in the chat.
-
-**Step 2 — Consistency check**
-
-Click the inline button to run the check. The consistency report appears in the chat as usual.
-
-**Step 3 — Direction message**
-
-After the report, Arianna sends a second message establishing the working direction for the session:
-
-> *"The XAL is the source of truth. Any inconsistencies should be resolved by updating the scenario — not the XAL. Ask for help refining it."*
-
-This message stays in the chat history and informs all subsequent responses: when you ask Arianna to fix a discrepancy, it will propose changes to the scenario, leaving the XAL intact.
+1. **Check suggestion**: a message in the chat says that the scenario was inferred from the XAL and may contain inaccuracies, with a **Verify Scenario Consistency** button. Until you run the check, the **Verify XAL Consistency** button in the scenario tab shows a dot.
+2. **Consistency check**: click **Verify Scenario Consistency** in the message, or **Verify XAL Consistency** in the scenario tab. The report appears in the chat (see [Verifying Consistency](verify_consistency.md)). After the first check, the button in the message is disabled.
+3. **Working direction**: after the report, Arianna adds a message: *The XAL is the source of truth. Any inconsistencies should be resolved by editing the scenario — not the XAL. Ask me for help refining it.*
+4. **Update scenario from report**: click this button, under the message, to have Arianna fix the scenario where the report found differences. Only the scenario changes; the XAL stays as it is.
 
 ---
 
 ## Refining the scenario
 
-Once the consistency check is done, refine the scenario by describing corrections in the chat. The XAL remains unchanged throughout — the goal of this flow is to produce a scenario that accurately describes what the XAL does, not to change the XAL.
+After the check, refine the scenario by describing corrections in the chat, then click **Update Scenario**. The goal of this flow is a scenario that describes what the XAL does, not a different XAL.
 
-When the scenario is accurate, you can switch to [Consulenza mode](sessions.md#chat-modes) to ask operational questions about the automaton, or commit both files to the repository.
+When the scenario is accurate, switch to the **Consult** skill to ask questions about the automaton, or commit both files to the repository.

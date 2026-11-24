@@ -10,46 +10,39 @@ Questo flusso è utile quando:
 
 - stai lavorando con un file XAL legacy creato manualmente o con un altro strumento
 - hai ricevuto un file XAL e vuoi una descrizione leggibile di cosa fa
-- vuoi avviare una sessione di consulenza su un automa esistente
+- vuoi fare ad Arianna domande su un automa esistente
 
 ---
 
 ## Avviare il flusso
 
-Apri una sessione chat per il file XAL (tasto destro → **Open chat** o **New chat**). Se il file non ha ancora uno scenario, l'area chat mostra una singola call-to-action:
+Clicca con il tasto destro il file XAL nel **Repository Explorer** e seleziona **New chat** (oppure **Open chat**). Se il file ha degli automi ma non ha ancora uno scenario, la chat mostra *This XAL file has no associated scenario yet.* e, al posto del campo di testo, il pulsante **Generate scenario from XAL**.
 
-**Generate scenario from XAL**
+![Il pulsante Generate scenario from XAL](../../images/designer/arianna/scenario_from_xal_cta.png)
+/// caption
+Fig.1 - Una chat su un file XAL senza scenario
+///
 
-Cliccala. Arianna legge l'intero contenuto XAL e genera uno scenario strutturato. Il file satellite `.scenario.md` viene creato e il tab scenario si apre.
+Clicca **Generate scenario from XAL**. Arianna legge tutto l'XAL e scrive uno scenario strutturato. Il file `.scenario.md` viene creato accanto al file `.xal` e si apre il tab scenario.
+
+!!! tip "Solo domande, senza scenario"
+    Se vuoi solo fare domande sull'XAL, seleziona la skill **Consult** nell'intestazione della chat. Il campo di testo ricompare e Arianna risponde su stati e transizioni dell'XAL senza creare uno scenario. Vedi [Skill](sessions.md#skill).
 
 ---
 
 ## Il flusso guidato di verifica
 
-Ricostruire uno scenario dall'XAL è un'operazione inversa — Arianna inferisce l'intenzione dalla struttura, il che può introdurre imprecisioni, soprattutto con automi complessi che contengono logiche non ovvie.
+Ricostruire uno scenario da un XAL è un'operazione inversa: Arianna deduce l'intenzione dalla struttura, e questo può introdurre imprecisioni, soprattutto negli automi complessi. Dopo la generazione dello scenario, Arianna ti guida in una verifica:
 
-Per aiutarti a individuare questi problemi immediatamente, Arianna avvia automaticamente un flusso guidato dopo la generazione dello scenario:
-
-**Step 1 — Prompt post-generazione**
-
-Arianna invia un messaggio in chat suggerendo che il primo scenario generato potrebbe contenere imprecisioni, con un pulsante **Verify Consistency** inline nel messaggio. Non devi cercare il pulsante nel tab scenario — è direttamente in chat.
-
-**Step 2 — Verifica di consistenza**
-
-Clicca il pulsante inline per avviare la verifica. Il report appare in chat come di consueto.
-
-**Step 3 — Messaggio di direzione**
-
-Dopo il report, Arianna invia un secondo messaggio che stabilisce la direzione di lavoro per la sessione:
-
-> *"L'XAL è la fonte di verità. Le incongruenze rilevate vanno risolte modificando lo scenario — non l'XAL. Chiedi pure aiuto per affinarlo."*
-
-Questo messaggio rimane nella cronologia della chat e informa tutte le risposte successive: quando chiedi ad Arianna di correggere una discrepanza, proporrà modifiche allo scenario, lasciando l'XAL intatto.
+1. **Suggerimento di verifica**: un messaggio in chat dice che lo scenario è stato dedotto dall'XAL e può contenere imprecisioni, con il pulsante **Verify Scenario Consistency**. Finché non esegui la verifica, il pulsante **Verify XAL Consistency** nel tab scenario mostra un pallino.
+2. **Verifica di consistenza**: clicca **Verify Scenario Consistency** nel messaggio, oppure **Verify XAL Consistency** nel tab scenario. Il report compare in chat (vedi [Verificare la consistenza](verify_consistency.md)). Dopo la prima verifica, il pulsante nel messaggio si disattiva.
+3. **Direzione di lavoro**: dopo il report, Arianna aggiunge un messaggio: *The XAL is the source of truth. Any inconsistencies should be resolved by editing the scenario — not the XAL. Ask me for help refining it.*
+4. **Update scenario from report**: clicca questo pulsante, sotto il messaggio, perché Arianna corregga lo scenario dove il report ha trovato differenze. Cambia solo lo scenario; l'XAL resta com'è.
 
 ---
 
 ## Affinare lo scenario
 
-Una volta completata la verifica di consistenza, affina lo scenario descrivendo le correzioni in chat. L'XAL rimane invariato per tutta la durata di questo flusso — l'obiettivo è produrre uno scenario che descriva accuratamente ciò che l'XAL fa, non cambiare l'XAL.
+Dopo la verifica, affina lo scenario descrivendo le correzioni in chat, poi clicca **Update Scenario**. Lo scopo di questo flusso è uno scenario che descriva quello che fa l'XAL, non un XAL diverso.
 
-Quando lo scenario è accurato, puoi passare alla modalità [Consulenza](sessions.md#modalità-chat) per fare domande operative sull'automa, oppure committare entrambi i file nel repository.
+Quando lo scenario è accurato, passa alla skill **Consult** per fare domande sull'automa, oppure committa entrambi i file nel repository.
