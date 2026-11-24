@@ -53,7 +53,7 @@ Se l'XAL contiene qualcosa che non funzionerà quando viene eseguito, Arianna ag
 - transizioni che aspettano un valore che nessuna Metric restituisce;
 - Metric con più output, nessuno dei quali indicato come il valore che le transizioni confrontano.
 
-Se alcune Action o Metric eseguono metodi Java, vengono generati anche gli stub Java, e la chat dice in quale file.
+Se alcune Action o Metric eseguono metodi Java, vengono generati anche gli stub Java, e la chat dice in quale file (vedi [Stub Java](java_stubs.md)).
 
 ---
 

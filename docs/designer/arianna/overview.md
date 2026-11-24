@@ -138,6 +138,7 @@ Once a chat session is open, Arianna can help you with the following tasks. Each
 | [Generating a Scenario](generating_scenario.md) | You have a natural-language description and want to produce a structured scenario |
 | [Generating XAL](generating_xal.md) | A scenario is ready and you want to generate the XAL file |
 | [Updating XAL](updating_xal.md) | The scenario has changed and you want to propagate the changes to the existing XAL |
+| [Java Stubs](java_stubs.md) | The XAL runs Java methods and you want to know where their code goes |
 | [Syncing the Scenario](syncing_scenario.md) | You have edited the XAL manually and want to update the scenario to match |
 | [Verifying Consistency](verify_consistency.md) | You want to check that scenario and XAL are semantically aligned |
 | [Generate Scenario from XAL](scenario_from_xal.md) | You have an existing XAL file with no scenario and want to reconstruct one |

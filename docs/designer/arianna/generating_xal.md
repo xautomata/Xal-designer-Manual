@@ -53,7 +53,7 @@ If the XAL contains something that will not work when it runs, Arianna adds a wa
 - transitions that wait for a value that no Metric returns;
 - Metrics with several outputs, none of them marked as the value the transitions compare.
 
-If some Actions or Metrics run Java methods, the Java stubs are generated too, and the chat says in which file.
+If some Actions or Metrics run Java methods, the Java stubs are generated too, and the chat says in which file (see [Java Stubs](java_stubs.md)).
 
 ---
 

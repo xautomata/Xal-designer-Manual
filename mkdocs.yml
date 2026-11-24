@@ -123,6 +123,7 @@ nav:
           - Generating a Scenario: designer/arianna/generating_scenario.md
           - Generating XAL: designer/arianna/generating_xal.md
           - Updating XAL: designer/arianna/updating_xal.md
+          - Java Stubs: designer/arianna/java_stubs.md
           - Syncing the Scenario: designer/arianna/syncing_scenario.md
           - Scenario History: designer/arianna/scenario_history.md
           - Verifying Consistency: designer/arianna/verify_consistency.md
