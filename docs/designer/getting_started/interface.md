@@ -4,38 +4,44 @@ The XAL Designer interface is organized into four main areas that work together 
 
 ![XAL Designer interface overview](../../images/designer/getting_started/interface.png)
 /// caption
-Fig.1 - The XAL Designer interface with an automaton open (screenshot pending)
+Fig.1 - The XAL Designer interface with an automaton open and a state selected
 ///
 
 ---
 
 ## Top bar
 
-The top bar is always visible and provides access to global controls.
+The top bar provides access to global controls.
 
 | Element | Description |
 |---|---|
-| **Repository** | Shows the currently connected repository. Click to change it. |
-| **Branch** | Selects the branch to work on. |
-| **Upload / Commit button** | When connected to a VCS: opens the Commit & Push dialog. When working in browser mode: opens the file upload dialog. |
-| **Run-time Instance** | Reserved for future use — will allow connecting to a live platform instance. |
+| **Eye** (left) | **Full immersion**: hides the top bar and collapses the left sidebar, so the canvas gets more room. Click the thin strip at the top to show the bar again. |
+| **Repository / branch** | Shows the connected repository and branch. Click it to choose another repository or branch. Before you connect, it reads **Connect to VCS**. |
+| **Upload arrow** | Opens the [Commit & Push](../publishing/commit.md) dialog. It is visible only when a repository is connected, and active when there are changes to commit. |
+| **Play** (right) | **Run-time instance**: opens the Xautomata run-time platform in a new browser tab. |
 
 ---
 
 ## Left sidebar
 
-The sidebar provides access to all editing panels and tools. Click an icon to open the corresponding panel.
+The sidebar provides access to all editing panels and tools. Hover an icon to see its name, click it to open the corresponding panel.
 
-| Icon | Panel | Description |
+The double arrow at the top collapses the open panel to the icons only, and expands it again.
+
+| Icon | Name | Description |
 |---|---|---|
-| File | Repository Explorer | Browse the file and automaton tree of the connected repository |
-| Robot | Automata Management | Create, rename, and delete automata |
-| Globe | Global State Variables | Manage the global state variables of the active automaton |
-| Clock | Clock Variables | Manage the clock variables of the active automaton |
-| Microchip | New State | Add a new state to the active automaton |
-| Recycle | New Transition | Add a new transition to the active automaton |
+| Tree | File | Opens the **Explorer**: the file and automaton tree of the connected repository |
+| Globe | Global States | Manages the global state variables of the active automaton |
+| Clock | Clock Vars | Manages the clock variables of the active automaton |
+| Microchip | New State | Adds a new state to the active automaton |
+| Two arrows | New Transition | Adds a new transition to the active automaton |
 | Store | Marketplace | *(Coming soon)* |
-| Wand | AI Assistant | Opens the Arianna chat panel |
+| Sparkle | AI Assistant | Opens the [Arianna](../arianna/overview.md) chat panel |
+| User (bottom) | User | Shows your account, with **Logout** (or **Connect to VCS** when you are not connected) and the **Dark Mode (beta)** switch |
+
+Global States, Clock Vars, New State and New Transition are active only when an automaton is open.
+
+To create, rename or delete an automaton, right-click a file or an automaton in the Explorer. At the bottom of the Explorer, **Upload File** loads a XAL file from your computer, and **+** creates a new XAL file.
 
 ---
 
@@ -50,7 +56,7 @@ It displays one of two views depending on the active tab:
 
 You can pan the canvas by clicking and dragging on an empty area, and zoom with the scroll wheel. Individual nodes can be dragged to reposition them.
 
-At the bottom of the canvas, two buttons provide **undo** and **redo** for layout changes.
+At the bottom of the canvas, two buttons provide **undo** and **redo** for the changes to the automaton. You can also press **Ctrl+Z** and **Ctrl+Y** (**Cmd** on macOS).
 
 ---
 
@@ -71,6 +77,10 @@ Changes made in the panel are applied immediately to the automaton, with a short
 
 ## Tabs
 
-Each open automaton appears as a tab in the tab bar, next to the persistent **Overview** tab.
+Each open automaton appears as a tab in the tab bar, next to the persistent **Overview** tab. When you work with Arianna, the scenario tab sits right after Overview.
 
-A **dot indicator** on a tab signals that the automaton has uncommitted changes. Clicking a tab switches the canvas to that automaton. Clicking the **×** on a tab closes it — if there are uncommitted changes, a confirmation dialog appears first.
+- Click a tab to switch the canvas to that automaton. Hover it to see the file path.
+- Drag a tab to change its position.
+- A **dot** on a tab signals uncommitted changes. When you hover the tab, the dot becomes the **×** button.
+- Click **×**, or click the tab with the middle mouse button, to close it. Closing a tab does not discard its changes: see [Commit and Push](../publishing/commit.md#closing-a-tab-with-uncommitted-changes).
+- Right-click a tab for **Close**, **Close all other tabs** and the same actions as the file menu in the Explorer.

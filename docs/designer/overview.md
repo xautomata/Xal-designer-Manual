@@ -25,14 +25,16 @@ The **left sidebar** provides navigation and editing tools. Its icons give acces
 
 | Icon | Panel |
 |---|---|
-| File | Repository Explorer |
-| Robot | Automata Management |
-| Globe | Global State Variables |
-| Clock | Clock Variables |
-| Microchip | Add new state |
-| Recycle | Add new transition |
+| Tree | File (Explorer) |
+| Globe | Global States |
+| Clock | Clock Vars |
+| Microchip | New State |
+| Two arrows | New Transition |
 | Store | Marketplace *(coming soon)* |
-| Wand | AI Assistant (Arianna) |
+| Sparkle | AI Assistant (Arianna) |
+| User (bottom) | Account, logout and dark mode |
+
+The **top bar** shows the connected repository and branch, the Commit & Push button, and the buttons for full immersion and the run-time instance.
 
 The **canvas** occupies the central area. It displays either the Process Overview graph or the interactive diagram of the currently open automaton.
 
@@ -42,11 +44,13 @@ The **right panel** displays the configuration form for the currently selected s
 
 ## Tabs
 
-Each automaton you open appears as a tab in the top bar, next to the **Overview** tab. You can have multiple automata open at the same time and switch between them freely.
+Each automaton you open appears as a tab in the tab bar, next to the **Overview** tab. You can have multiple automata open at the same time and switch between them freely.
 
 A dot indicator on a tab signals that the automaton has uncommitted changes.
 
+See [The Interface](getting_started/interface.md) for every element in detail.
+
 ![XAL Designer interface](../images/designer/overview.png)
 /// caption
-Fig.1 - The XAL Designer interface
+Fig.1 - The XAL Designer interface on the Process Overview
 ///

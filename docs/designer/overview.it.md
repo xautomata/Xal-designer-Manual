@@ -25,14 +25,16 @@ La **barra laterale sinistra** fornisce navigazione e strumenti di modifica. Le 
 
 | Icona | Pannello |
 |---|---|
-| File | Repository Explorer |
-| Robot | Automata Management |
-| Globo | Global State Variables |
-| Orologio | Clock Variables |
-| Microchip | Add new state |
-| Riciclo | Add new transition |
+| Albero | File (Explorer) |
+| Globo | Global States |
+| Orologio | Clock Vars |
+| Microchip | New State |
+| Due frecce | New Transition |
 | Store | Marketplace *(coming soon)* |
-| Bacchetta | AI Assistant (Arianna) |
+| Scintilla | AI Assistant (Arianna) |
+| Utente (in basso) | Account, logout e modalità scura |
+
+La **barra superiore** mostra il repository e il branch collegati, il pulsante di Commit & Push e i pulsanti per la full immersion e la run-time instance.
 
 Il **canvas** occupa l'area centrale. Mostra il grafico del Process Overview oppure il diagramma interattivo dell'automa attualmente aperto.
 
@@ -42,11 +44,13 @@ Il **pannello destro** mostra il modulo di configurazione per lo stato o la tran
 
 ## Tab
 
-Ogni automa aperto appare come tab nella barra superiore, accanto al tab **Overview**. È possibile avere più automi aperti contemporaneamente e passare liberamente dall'uno all'altro.
+Ogni automa aperto appare come tab nella barra dei tab, accanto al tab **Overview**. È possibile avere più automi aperti contemporaneamente e passare liberamente dall'uno all'altro.
 
 Un indicatore a punto su un tab segnala che l'automa ha modifiche non ancora committate.
 
+Vedi [L'Interfaccia](getting_started/interface.md) per il dettaglio di ogni elemento.
+
 ![Interfaccia XAL Designer](../images/designer/overview.png)
 /// caption
-Fig.1 - L'interfaccia del XAL Designer
+Fig.1 - L'interfaccia del XAL Designer sul Process Overview
 ///
