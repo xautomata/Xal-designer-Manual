@@ -41,7 +41,7 @@ The double arrow at the top collapses the open panel to the icons only, and expa
 
 Global States, Clock Vars, New State and New Transition are active only when an automaton is open.
 
-To create, rename or delete an automaton, right-click a file or an automaton in the Explorer. At the bottom of the Explorer, **Upload File** loads a XAL file from your computer, and **+** creates a new XAL file.
+To create, rename or delete an automaton, right-click a file or an automaton in the Explorer (see [Managing Automata](../automata/managing.md)). At the bottom of the Explorer, **Upload File** loads a XAL file from your computer, and **+** creates a new XAL file.
 
 ---
 

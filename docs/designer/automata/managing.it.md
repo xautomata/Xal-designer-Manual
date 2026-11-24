@@ -1,57 +1,66 @@
 # Gestione degli Automi
 
-Il pannello **Automata Management** fornisce strumenti per creare e organizzare gli automi all'interno del file attualmente caricato.
+Crei, rinomini ed elimini gli automi dall'**Explorer** nella barra laterale sinistra.
 
-Per aprirlo, fai clic sull'**icona robot** nella barra laterale sinistra.
+Fai clic con il tasto destro su un file XAL o su un automa, oppure sul pulsante **⋮** in fondo alla sua riga, per aprirne il menu. Il tasto destro sul tab di un automa nel canvas apre le stesse azioni dell'automa.
 
-![Pannello Automata Management](../../images/designer/automata/management_panel.png)
+![Il menu di un automa nell'Explorer](../../images/designer/automata/automaton_context_menu.png)
 /// caption
-Fig.1 - Il pannello Automata Management
+Fig.1 - Il menu di un automa nell'Explorer
 ///
+
+Per creare un nuovo file XAL, fai clic su **+** in fondo all'Explorer. Il nuovo file contiene già un automa con lo stesso nome del file.
 
 ---
 
 ## Creare un automa
 
-Fai clic su **Create** per aprire la finestra di dialogo di creazione.
+Fai clic con il tasto destro sul file XAL e scegli **New automaton**. Si apre la finestra **Create Automaton**.
 
-![Finestra di dialogo Create Automaton](../../images/designer/automata/create_dialog.png)
+![Finestra Create Automaton](../../images/designer/automata/create_dialog.png)
 /// caption
-Fig.2 - La finestra di dialogo Create Automaton
+Fig.2 - La finestra Create Automaton
 ///
-
-Compila i seguenti campi:
 
 | Campo | Descrizione |
 |---|---|
-| **File** | Il file XAL in cui verrà creato l'automa. Pre-compilato con il file attualmente aperto. Fai clic sull'icona file per selezionarne uno diverso. |
-| **Name** | L'identificatore univoco dell'automa all'interno del file. Obbligatorio. |
-| **Pattern** | Un template opzionale da usare come punto di partenza. *(Coming soon)* |
+| **File** | Il file XAL in cui viene creato l'automa. Già compilato con il file su cui hai fatto clic. Fai clic sull'icona del file per sceglierne un altro. |
+| **Name** | Il nome dell'automa. Obbligatorio. Usa solo lettere e numeri. Deve essere unico nel file. |
+| **Pattern** | Non ancora disponibile. |
 
-Fai clic su **Confirm** per creare l'automa. Si apre immediatamente come nuovo tab nel canvas con un diagramma vuoto.
+Fai clic su **Confirm**. L'automa si apre in un nuovo tab, con un solo stato `init` che è già lo stato iniziale.
 
 ---
 
 ## Rinominare un automa
 
-Fai clic su **Rename** per cambiare il nome dell'automa attualmente attivo.
+Fai clic con il tasto destro sull'automa e scegli **Rename**. L'automa si apre nel suo tab e si apre la finestra **Edit Automaton**.
+
+Scrivi il nuovo nome e fai clic su **Save**. Valgono le stesse regole della creazione: solo lettere e numeri, unico nel file.
+
+Per annullare una rinomina, premi **Ctrl+Z** nel tab dell'automa.
 
 !!! warning
-    Rinominare un automa aggiorna il suo identificatore nel file. Qualsiasi altro automa che vi fa riferimento per nome — tramite una `TransitionNew` o una query Metric — dovrà essere aggiornato manualmente.
+    Il designer non aggiorna i riferimenti al vecchio nome. Ogni altro automa che fa riferimento a questo per nome, tramite una `TransitionNew` o una query Metric, va aggiornato a mano.
 
 ---
 
 ## Eliminare un automa
 
-Fai clic su **Delete** per rimuovere l'automa attualmente attivo dal file.
+Fai clic con il tasto destro sull'automa e scegli **Delete**. Conferma con **Delete**. Il tab dell'automa si chiude.
 
-!!! warning
-    L'eliminazione è immediata e non può essere annullata all'interno del designer. Esegui il Commit delle modifiche prima di eliminare se vuoi preservare la possibilità di ripristinare l'automa dal controllo versione.
+Non puoi annullare un'eliminazione con **Ctrl+Z**. Cosa succede dopo dipende dall'automa:
+
+- **Un automa che è nel repository** resta nell'Explorer, segnato come rimosso, fino al commit. Per recuperarlo, fai clic con il tasto destro e scegli **Restore automaton**, poi conferma con **Restore**. L'automa torna alla versione del repository.
+- **Un automa che hai creato e non hai mai committato** va perso.
+
+L'eliminazione arriva nel repository solo quando fai il [commit](../publishing/commit.md).
 
 ---
 
-## Family Trees e Correlations
+## Scartare le modifiche a un automa
 
-Le opzioni **Family Trees** e **Correlations** nel pannello non sono ancora attive.
+Quando un automa ha modifiche non committate, il suo menu mostra anche **Discard changes**. Vedi [Commit e Push](../publishing/commit.md#chiudere-un-tab-con-modifiche-non-committate).
 
-Quando disponibili, forniranno viste filtrate del Process Overview focalizzate rispettivamente sulle relazioni genitore-figlio e sull'intero grafico delle correlazioni dell'automa selezionato.
+!!! note
+    Mentre Arianna rigenera un file XAL, le azioni sul file e sui suoi automi sono disattivate. Vedi [Generare l'XAL](../arianna/generating_xal.md#mentre-lxal-viene-generato).
