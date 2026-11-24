@@ -22,24 +22,28 @@ SELECT GLOBALSTATE_STATUS FROM Scenario_Follower_Manager WHERE groupLabel = 'thi
 
 ## Table naming convention
 
-The table name encodes the file and automaton being queried, using an underscore separator:
+Each automaton has its own table. The table name joins the XAL file name and the automaton `Id` with an underscore:
 
 ```
-<FilePrefix>_<AutomatonId>
+<FileName>_<AutomatonId>
 ```
 
-Where `<FilePrefix>` is derived from the XAL file name (without extension, with hyphens replaced by underscores) and `<AutomatonId>` is the `Id` attribute of the target automaton.
+`<FileName>` is the XAL file name without the `.xal` extension, unchanged. `<AutomatonId>` is the `Id` attribute of the target automaton.
 
 Examples:
 
 | File | Automaton | Table name |
 |---|---|---|
-| `scenario.xal` | `Follower_Manager` | `Scenario_Follower_Manager` |
-| `patcher.xal` | `Dispatcher` | `PATCHER_DISPATCHER` |
-| `drone-leader.xal` | `C2_Link_Monitor` | `Scenario_C2_Link_Monitor` |
+| `scenario.xal` | `Follower_Manager` | `scenario_Follower_Manager` |
+| `patcher.xal` | `Dispatcher` | `patcher_Dispatcher` |
+
+Upper and lower case do not matter in the table name. `patcher_Dispatcher`, `PATCHER_DISPATCHER` and `Patcher_dispatcher` read the same table.
 
 !!! note
-    The exact casing convention may vary depending on the deployment. Follow the conventions used in existing files within the same project.
+    This applies only to table names in queries. In the `Path` of a TransitionNew, write the file name exactly, with the same case.
+
+!!! warning
+    Do not use hyphens in the name of a XAL file that other automata query. The platform cannot create a table for a file like `drone-leader.xal`, so every query on it fails.
 
 ---
 

@@ -22,24 +22,28 @@ SELECT GLOBALSTATE_STATUS FROM Scenario_Follower_Manager WHERE groupLabel = 'thi
 
 ## Convenzione di denominazione delle tabelle
 
-Il nome della tabella codifica il file e l'automa oggetto della query, usando un separatore underscore:
+Ogni automa ha una sua tabella. Il nome della tabella unisce il nome del file XAL e l'`Id` dell'automa con un underscore:
 
 ```
-<FilePrefix>_<AutomatonId>
+<FileName>_<AutomatonId>
 ```
 
-Dove `<FilePrefix>` è derivato dal nome del file XAL (senza estensione, con i trattini sostituiti da underscore) e `<AutomatonId>` è l'attributo `Id` dell'automa di destinazione.
+`<FileName>` è il nome del file XAL senza l'estensione `.xal`, invariato. `<AutomatonId>` è l'attributo `Id` dell'automa di destinazione.
 
 Esempi:
 
 | File | Automa | Nome tabella |
 |---|---|---|
-| `scenario.xal` | `Follower_Manager` | `Scenario_Follower_Manager` |
-| `patcher.xal` | `Dispatcher` | `PATCHER_DISPATCHER` |
-| `drone-leader.xal` | `C2_Link_Monitor` | `Scenario_C2_Link_Monitor` |
+| `scenario.xal` | `Follower_Manager` | `scenario_Follower_Manager` |
+| `patcher.xal` | `Dispatcher` | `patcher_Dispatcher` |
+
+Maiuscole e minuscole non contano nel nome della tabella. `patcher_Dispatcher`, `PATCHER_DISPATCHER` e `Patcher_dispatcher` leggono la stessa tabella.
 
 !!! note
-    La convenzione esatta di capitalizzazione può variare a seconda del deployment. Seguire le convenzioni usate nei file esistenti all'interno dello stesso progetto.
+    Questo vale solo per i nomi delle tabelle nelle query. Nel `Path` di una TransitionNew scrivi il nome del file esatto, con le stesse maiuscole.
+
+!!! warning
+    Non usare trattini nel nome di un file XAL che altri automi interrogano. La piattaforma non riesce a creare la tabella di un file come `drone-leader.xal`, quindi ogni query su quella tabella fallisce.
 
 ---
 
