@@ -46,7 +46,7 @@ Indica cosa esegue la action.
 | `Class` | Il nome completo della classe | Il nome del file XAL che contiene l'automa |
 | `Path` | Il percorso del file `.java` nel repository | Non usato |
 
-Il metodo deve essere `public static`. L'interprete carica la classe dal suo classpath, che comprende i file jar elencati nell'attributo `parameter` di `<XAL>` (vedi [Struttura del file XAL](file_structure.md#elemento-radice)): a runtime il file `.java` nel repository non serve.
+Il metodo deve essere `public static`. L'interprete carica la classe dai file `.jar` installati sulla piattaforma: a runtime il file `.java` nel repository non serve.
 
 ### `<Query>`
 

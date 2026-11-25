@@ -4,6 +4,12 @@ Gli automata non operano in isolamento. Sono profondamente integrati con la piat
 
 ---
 
+## L'interprete
+
+Dentro la piattaforma, gli automi li esegue l'**interprete**: il componente che carica i file XAL, li valida e fa passare ogni istanza da uno stato all'altro. Quando questo manuale dice cosa l'interprete accetta o fa, descrive come si comportano gli automi una volta in esecuzione sulla piattaforma.
+
+---
+
 ## Automata e oggetti monitorati
 
 Ogni istanza di automaton è associata a uno o più oggetti monitorati nella piattaforma — server, dispositivi di rete, servizi o qualsiasi altra risorsa infrastrutturale.

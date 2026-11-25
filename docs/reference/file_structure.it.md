@@ -20,12 +20,6 @@ L'elemento radice di ogni file XAL è `<XAL>`. Contiene uno o più elementi `<Au
 </XAL>
 ```
 
-L'attributo opzionale `parameter` su `<XAL>` indica dove l'interprete trova il codice Java delle action e delle metric del file. È un elenco separato da `;`: ogni voce è un file `.jar`, oppure una cartella che termina con `/`, di cui si usano tutti i file `.jar`.
-
-```xml
-<XAL parameter="/opt/xautomata/lib/connectors.jar;/opt/xautomata/lib/custom/">
-```
-
 ---
 
 ## Struttura dell'automa

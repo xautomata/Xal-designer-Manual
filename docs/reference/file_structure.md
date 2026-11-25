@@ -20,12 +20,6 @@ The root element of every XAL file is `<XAL>`. It contains one or more `<Automat
 </XAL>
 ```
 
-The optional `parameter` attribute on `<XAL>` sets where the interpreter finds the Java code of the file's actions and metrics. It is a list separated by `;`: each item is a `.jar` file, or a folder ending with `/` whose `.jar` files are all used.
-
-```xml
-<XAL parameter="/opt/xautomata/lib/connectors.jar;/opt/xautomata/lib/custom/">
-```
-
 ---
 
 ## Automaton structure

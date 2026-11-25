@@ -4,6 +4,12 @@ Automata do not operate in isolation. They are deeply integrated with the XAUTOM
 
 ---
 
+## The interpreter
+
+Inside the platform, automata are run by the **interpreter**: the component that loads the XAL files, validates them and moves each instance from one state to the next. When this manual says what the interpreter accepts or does, it describes how automata behave once they run on the platform.
+
+---
+
 ## Automata and monitored objects
 
 Every automaton instance is associated with one or more monitored objects in the platform — servers, network devices, services, or any other infrastructure resource.

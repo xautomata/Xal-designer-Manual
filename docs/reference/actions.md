@@ -46,7 +46,7 @@ Specifies what the action runs.
 | `Class` | The fully qualified name of the class | The name of the XAL file that contains the automaton |
 | `Path` | The path of the `.java` file in the repository | Not used |
 
-The method must be `public static`. The interpreter loads the class from its classpath, which includes the jar files listed in the `parameter` attribute of `<XAL>` (see [File Structure](file_structure.md#root-element)): the `.java` file in the repository is not required at runtime.
+The method must be `public static`. The interpreter loads the class from the `.jar` files installed on the platform: the `.java` file in the repository is not required at runtime.
 
 ### `<Query>`
 
