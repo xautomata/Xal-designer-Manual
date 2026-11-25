@@ -2,32 +2,49 @@
 
 Global state variables store data that persists across the entire lifecycle of an automaton instance. They act as the automaton's memory — holding values that states and transitions can read and write.
 
-To view and manage global state variables, click the **globe icon** in the left sidebar. The panel shows all variables defined for the currently active automaton.
+To view and manage global state variables, click **Global States** (globe icon) in the left sidebar. The panel shows all variables defined for the active automaton. It is active only when an automaton is open.
 
-![Global State panel](../../images/designer/automata/global_state_panel.png)
+![Global States panel](../../images/designer/automata/global_state_panel.png)
 /// caption
-Fig.1 - The Global State Variables panel
+Fig.1 - The Global States panel, with the variable status starred
 ///
 
 ---
 
 ## Adding a variable
 
-Click **+** or the add button to create a new variable. Each variable has:
+1. Click **+** at the top right of the panel. A new row appears with the name field open.
+2. Type the name and press **Enter**.
+3. Click **+ Type** and **+ Value** to fill the other fields.
+
+Each variable has:
 
 | Field | Description |
 |---|---|
-| **Name** | The identifier used to reference the variable throughout the automaton |
-| **Type** | The data type (e.g. `string`, `int`, `boolean`, `list`) |
-| **Value** | An optional default value assigned when the automaton is first instantiated |
+| **Name** | The identifier used to reference the variable throughout the automaton. Required. |
+| **Type** | The data type: `string`, `int`, `long`, `bool`, `object`, or a collection such as `list[string]` or `map[string, int]`. Optional. |
+| **Value** | The starting value of the variable when an instance of the automaton starts. Optional. |
+| **★** | Starred variable: the interpreter writes its value in the log messages about the instance, for example when a function fails. Click the star to turn it on or off. |
+
+The name must contain only letters, digits and `_`, and must not start with a digit. Two variables of the same automaton cannot have the same name. If the name is not valid, a red message appears under the field and the variable is not saved until you correct it.
 
 ---
 
 ## Editing a variable
 
-Click on a variable card to edit it inline. Changes are applied immediately to the automaton.
+Click a name, a type or a value to edit it in place. Press **Enter** or click elsewhere to confirm.
 
-To delete a variable, click the **trash icon** on the variable card.
+- If you clear the type or the value, the field is removed from the variable.
+- If you clear the name, the variable is deleted.
+
+To delete a variable, click the **trash icon** on its row.
+
+Every change is saved automatically: while the panel saves it, **Applying changes…** appears at the top right of the canvas. You can undo and redo the changes with the buttons at the bottom of the canvas, or with **Ctrl+Z** and **Ctrl+Y** (see [The Interface](../getting_started/interface.md#canvas)).
+
+!!! warning
+    The designer does not check whether a variable is still used before you delete or rename it. Update the parameters, paths and clock constraints that use it first.
+
+While [Arianna](../arianna/overview.md) regenerates the file of the automaton, the panel is read-only and shows **Regenerating this automaton...**.
 
 ---
 
@@ -41,4 +58,4 @@ Global state variables are referenced in:
 - **Clock constraints** — when a variable stores a threshold value used in a time condition
 
 !!! info
-    Variables whose names match a global state option in the automaton are automatically prefixed with `this.GLOBALSTATE_` in the XAL output. This prefix is handled transparently by the designer — you never need to type it manually.
+    When you pick a global state variable in one of these fields, the XAL refers to it as `this.GLOBALSTATE_<name>`. The designer adds this prefix for you — you never need to type it manually.

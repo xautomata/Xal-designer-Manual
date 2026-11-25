@@ -2,26 +2,36 @@
 
 Clock variables are timer identifiers used in transitions to measure elapsed time and enforce time-based conditions.
 
-To view and manage clock variables, click the **clock icon** in the left sidebar. The panel shows all clocks defined for the currently active automaton.
+To view and manage clock variables, click **Clock Vars** (clock icon) in the left sidebar. The panel shows all clocks defined for the active automaton. It is active only when an automaton is open.
 
-![Clock Variables panel](../../images/designer/automata/clock_vars_panel.png)
+![Clock Vars panel](../../images/designer/automata/clock_vars_panel.png)
 /// caption
-Fig.1 - The Clock Variables panel
+Fig.1 - The Clock Vars panel
 ///
 
 ---
 
 ## Adding a clock
 
-Click **+** or the add button to create a new clock. A clock has a single required field: its **name**. This name is used in clock constraints and clock resets on transitions.
+1. Click **+** at the top right of the panel. A new row appears with the name field open.
+2. Type the name and press **Enter**.
 
-Unlike global state variables, clocks have no type or default value — they are purely time counters.
+A clock has only a **name**, used in clock constraints and clock resets on transitions. Unlike global state variables, clocks have no type, value or star — they are purely time counters.
+
+The name follows the same rules as global state variables: only letters, digits and `_`, not starting with a digit, and no two clocks of the same automaton with the same name. If the name is not valid, a red message appears under the field.
+
+To rename a clock, click its name. If you clear the name, the clock is deleted.
+
+Every change is saved automatically and can be undone with **Ctrl+Z**, as in the [Global States](global_state.md#editing-a-variable) panel.
 
 ---
 
 ## Deleting a clock
 
-Click the **trash icon** on a clock card to remove it. Before deleting a clock, make sure no transitions in the automaton reference it in a clock constraint or clock reset.
+Click the **trash icon** on the clock's row to remove it.
+
+!!! warning
+    The designer does not check whether the clock is still used: it deletes it even when a transition refers to it in a clock constraint or a clock reset. Remove the clock from those transitions first. A clock constraint that names a clock that does not exist is invalid for the interpreter.
 
 ---
 
@@ -29,7 +39,7 @@ Click the **trash icon** on a clock card to remove it. Before deleting a clock, 
 
 Once a clock is defined, it becomes available in the **Clocks** section of the transition configuration panel:
 
-- **Clock Constraint** — add a condition such as `clk_retry >= 5 min` that must be satisfied for the transition to fire
-- **Clock Reset Variables** — select clocks to reset when the transition fires
+- **Clock constraint** — a condition such as `waitClock >= 5 min` that must hold for the transition to fire
+- **Clock Reset Variables** — the clocks to restart from zero when the transition fires
 
-For a full explanation of how clocks drive time-based logic, see [Clocks and Time](../../concepts/clocks.md).
+See [Metric Value and Clocks](../transitions/metric_clocks.md#clock-constraints) for the steps. For a full explanation of how clocks drive time-based logic, see [Clocks and Time](../../concepts/clocks.md).
