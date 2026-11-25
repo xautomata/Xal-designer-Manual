@@ -41,7 +41,7 @@ La doppia freccia in alto riduce il pannello aperto alle sole icone, e lo riapre
 
 Global States, Clock Vars, New State e New Transition sono attivi solo quando un automa è aperto.
 
-Per creare, rinominare o eliminare un automa, fai clic con il tasto destro su un file o su un automa nell'Explorer (vedi [Gestione degli Automi](../automata/managing.md)). In fondo all'Explorer, **Upload File** carica un file XAL dal tuo computer e **+** crea un nuovo file XAL.
+Per creare, rinominare o eliminare un automa, fai clic con il tasto destro su un file o su un automa nell'Explorer (vedi [Gestione degli Automi](../automata/managing.md)). In fondo all'Explorer, **Upload File** carica un file XAL dal tuo computer e **+** crea un nuovo file XAL. Vedi [I File nell'Explorer](explorer.md).
 
 ---
 

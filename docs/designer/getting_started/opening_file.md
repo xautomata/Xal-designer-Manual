@@ -31,7 +31,7 @@ If the login fails, an error message appears and you can try again. If you accep
 
 Once connected, the **Explorer** in the left sidebar shows the folders and files of the branch. Click a XAL file to expand it and see the automata it contains. Click an automaton to open it as a new tab on the canvas (see [Tabs](interface.md#tabs)).
 
-The arrow next to the **EXPLORER** title reloads the files from the repository.
+The arrow next to the **EXPLORER** title reloads the files from the repository. To add, move or rename files, see [Files in the Explorer](explorer.md).
 
 ![Explorer](../../images/designer/getting_started/repo_explorer.png)
 /// caption

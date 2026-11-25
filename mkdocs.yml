@@ -92,6 +92,7 @@ nav:
       - Getting Started:
           - Opening a File: designer/getting_started/opening_file.md
           - The Interface: designer/getting_started/interface.md
+          - Files in the Explorer: designer/getting_started/explorer.md
 
       - Process Overview:
           - Reading the Graph: designer/overview_graph/reading.md

@@ -31,7 +31,7 @@ Se l'accesso non riesce, compare un messaggio di errore e puoi riprovare. Se hai
 
 Una volta collegato, l'**Explorer** nella barra laterale sinistra mostra le cartelle e i file del branch. Fai clic su un file XAL per espanderlo e vedere gli automi che contiene. Fai clic su un automa per aprirlo in un nuovo tab nel canvas (vedi [Tab](interface.md#tab)).
 
-La freccia accanto al titolo **EXPLORER** ricarica i file dal repository.
+La freccia accanto al titolo **EXPLORER** ricarica i file dal repository. Per aggiungere, spostare o rinominare i file, vedi [I File nell'Explorer](explorer.md).
 
 ![Explorer](../../images/designer/getting_started/repo_explorer.png)
 /// caption
