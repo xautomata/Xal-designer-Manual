@@ -1,67 +1,113 @@
 # Istanziare Automi Figli (TransitionNew)
 
-Una **TransitionNew** fa due cose quando scatta: sposta l'automa nello stato di output e istanzia un nuovo automa figlio. Questo è il meccanismo usato per costruire famiglie di automi.
+Una **TransitionNew** fa due cose quando scatta: sposta l'automa nello stato di output e avvia un nuovo **automa figlio**. È così che si costruiscono le famiglie di automi.
 
 ---
 
-## Configurare una TransitionNew
+## Creare una TransitionNew
 
-Quando imposti un **Target Automaton** nella sezione Parameters di una transizione, la transizione diventa automaticamente una TransitionNew.
+1. Crea una transizione come al solito (vedi [Creare una transizione](creating.md)).
+2. Nella sezione **Parameters**, imposta il **Target File** e il **Target Automaton**.
+
+Appena sono impostati entrambi, il titolo del pannello diventa **TransitionNew**. Se compili anche la riga del ciclo, diventa una **TransitionNewMulti** (vedi [sotto](#un-figlio-per-ogni-elemento-transitionnewmulti)).
+
+La scelta si fa mentre crei la transizione: una Transition già salvata non mostra la sezione Parameters.
 
 ![Pannello TransitionNew](../../images/designer/transitions/transition_new.png)
 /// caption
-Fig.1 - Il pannello di configurazione della TransitionNew
+Fig.1 - Una TransitionNew che avvia RelocateDB da patcher.xal e gli passa DbHostName
 ///
+
+---
+
+## Target File
+
+Il **Target File** è il file XAL che contiene l'automa figlio. Con il selettore sopra il campo scegli da dove viene:
+
+- **File**: scegli dalla lista un file `.xal` del repository. Fai clic sulla **matita** per scriverne il nome.
+- **Global States**: scegli un Global State dell'automa corrente. Quando la transizione scatta, il file è il valore che quella variabile ha in quel momento. Usa una variabile di tipo stringa.
+
+Il figlio può stare anche nello stesso file del padre.
 
 ---
 
 ## Target Automaton
 
-Seleziona l'automa da istanziare dal menu a discesa **Target Automaton**. Le opzioni disponibili includono:
+Scegli l'automa da avviare dalla lista **Target Automaton**. Le opzioni sono in due gruppi:
 
-- Tutti gli automi definiti nel file XAL corrente
-- Variabili di stato globale, se l'automa target viene determinato dinamicamente a runtime
+- **Automatons**: gli automi del Target File;
+- **Global States**: i Global State dell'automa corrente. Quando la transizione scatta, l'automa è quello che ha per nome il valore della variabile.
 
-L'automa selezionato viene istanziato come nuova istanza indipendente quando la transizione scatta.
+Il campo è obbligatorio: senza, il pannello mostra **A target automaton is required**.
 
 ---
 
 ## Target Min Wait
 
-Il campo **Target Min Wait** imposta un ritardo minimo (in secondi) prima che l'automa figlio inizi l'elaborazione dopo essere stato istanziato. È utile quando il figlio deve aspettare che il genitore si stabilizzi prima di iniziare a leggere lo stato del genitore.
+**Target Min Wait** è il min wait del figlio, in secondi: il tempo minimo che il figlio passa in ciascuno dei suoi stati prima di poterne uscire. Lascialo vuoto o a 0 per nessuna attesa.
+
+Vedi [Min Wait e Ignore Min Wait](types.md#min-wait-e-ignore-min-wait).
 
 ---
 
 ## Parametri di input
 
-La sezione **Parameters** consente di passare valori dallo stato globale dell'automa genitore al figlio nel momento in cui viene creato.
-
-Ogni mappatura di parametro consiste in:
+I parametri di input copiano valori dal padre al figlio quando il figlio parte. Ogni riga accoppia due variabili:
 
 | Campo | Descrizione |
 |---|---|
-| **Target Variable** | Il nome della variabile nello stato globale dell'automa figlio |
-| **Local Variable** | Il nome della variabile nello stato globale dell'automa genitore da cui leggere |
+| **Target Variable** | Il Global State del figlio che riceve il valore. Le opzioni sono i Global State del Target Automaton. |
+| **Local Variable** | Il Global State del padre da cui si legge il valore. |
 
-Fai clic su **+** per aggiungere una mappatura di parametro. Fai clic su **×** per rimuoverne una.
+Se il Target Automaton viene da un Global State, il designer non può conoscere le variabili del figlio e la lista di Target Variable è vuota: scrivi il nome.
+
+Per aggiungere una riga, scegli le due variabili e fai clic su **+**. Per toglierla, fai clic su **×**. Se ne compili una sola, il pannello avvisa **Select values for both fields**.
+
+Il valore si copia una volta sola, quando il figlio parte: le modifiche successive nel padre non arrivano al figlio.
 
 !!! info
-    L'automa figlio deve avere le variabili corrispondenti definite nel proprio stato globale affinché i valori vengano ricevuti correttamente.
+    Il figlio deve dichiarare la Target Variable nel proprio Global State, con un tipo compatibile con la Local Variable. Altrimenti il valore non passa.
 
 ---
 
-## Monitorare il figlio
+## Un figlio per ogni elemento (TransitionNewMulti)
 
-Una volta che il figlio è in esecuzione, il genitore ne monitora l'avanzamento tramite una Metric. La Metric legge lo stato globale del figlio usando una query SQL-like che fa riferimento all'automa figlio per nome ed etichetta di gruppo.
+Una **TransitionNewMulti** avvia un figlio per ogni elemento di una lista. Compila la riga del ciclo dei parametri di input:
 
-Man mano che il figlio transita tra i suoi stati e raggiunge infine uno stato finale, la Metric del genitore restituisce il valore corrispondente e scatta la transizione appropriata.
+| Campo | Descrizione |
+|---|---|
+| **Loop Local Variable** | Un Global State di tipo lista del padre. |
+| **Loop Target Variable** | Il Global State di ogni figlio che riceve il suo elemento della lista. |
 
-Per una panoramica concettuale di questo pattern, vedi [Automaton Families](../../concepts/families.md).
+Quando la transizione scatta, la lista viene letta e parte un figlio per ogni elemento. Tutti i figli ricevono anche i parametri di input normali, e tutti usano lo stesso Target Min Wait.
+
+In una TransitionNewMulti i due campi del ciclo sono obbligatori: se uno è vuoto, il pannello mostra **Loop variables are required**.
 
 ---
 
-## Rappresentazione nel canvas
+## Avviare più di un figlio
 
-Gli archi TransitionNew appaiono come **frecce tratteggiate** nel canvas. L'etichetta mostra il nome dell'automa istanziato preceduto dal simbolo **+**.
+Ogni TransitionNew avvia un figlio (o uno per elemento, per una TransitionNewMulti). Per avviare figli diversi, metti le TransitionNew in fila attraverso gli stati: per esempio una da `A` a `B` che avvia il primo figlio e una da `B` a `C` che avvia il secondo.
 
-Quando più archi TransitionNew escono dallo stesso stato, ciascuno istanzia un automa figlio diverso — tutti vengono creati quando il genitore entra in quello stato.
+!!! warning
+    Non dare a uno stato due transizioni che possono scattare nello stesso momento, per esempio due TransitionNew senza vincoli Clock. L'automa non sa scegliere tra le due e si ferma con un errore.
+
+---
+
+## Seguire il figlio
+
+Dopo l'avvio, il padre segue il figlio con una [Metric](../states/metrics.md). La sua query legge il Global State del figlio dalla tabella del figlio, `<FileName>_<AutomatonId>`, filtrata per `groupLabel`:
+
+```sql
+SELECT GLOBALSTATE_STATUS FROM patcher_RelocateDB WHERE groupLabel = 'this.GROUPLABEL'
+```
+
+Quando il figlio arriva nello stato che il padre aspetta, la Metric restituisce il valore corrispondente e scatta la transizione del padre. Per i nomi delle tabelle e il legame con `groupLabel`, vedi [Sintassi delle query](../../reference/queries.md).
+
+Per lo schema completo, vedi [Famiglie di automata](../../concepts/families.md).
+
+---
+
+## Nel canvas
+
+Una TransitionNew è una **freccia tratteggiata** con l'etichetta **✚** e il nome dell'automa avviato. Una TransitionNewMulti mostra **✚✚**. Vedi [I tipi di transizione nel canvas](types.md#i-tipi-di-transizione-nel-canvas).
