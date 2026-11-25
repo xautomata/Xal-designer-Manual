@@ -149,7 +149,6 @@ nav:
       - Annotated Examples:
           - E-commerce Backoffice: reference/examples/ecommerce.md
           - IT Patcher: reference/examples/patcher.md
-          - C2 Intercept: reference/examples/c2_intercept.md
 
 copyright:
   All rights reserved

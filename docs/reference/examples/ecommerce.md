@@ -4,6 +4,8 @@ This example illustrates the **Starter / Operator** pattern: a persistent automa
 
 The file `ecommerce_backoffice.xal` models the backend processing of e-commerce orders, integrating a Shopify storefront with an ERP and a warehouse management system (WMS).
 
+The snippets below come from that file, cut down to the attributes that matter for each point.
+
 ---
 
 ## Automata in this file
@@ -39,6 +41,8 @@ The global state stores the API credentials and a list of already-processed orde
     <Transition IdInputState="newOrder" IdOutputState="newOrder"
       MetricValue="noNewOrders" IgnoreMinWait="true"/>
 
+    <Transition IdInputState="newOrder" IdOutputState="instantiatedOperator"
+      MetricValue="newOrderFound" IgnoreMinWait="true"/>
     <TransitionNew IdInputState="newOrder" IdOutputState="instantiatedOperator"
       IgnoreMinWait="true" Path="ecommerce_backoffice.xal" Type="Operator">
       <Input>
@@ -51,10 +55,32 @@ The global state stores the API credentials and a list of already-processed orde
 The key transitions are:
 
 - `newOrder → newOrder` (MetricValue `noNewOrders`): the automaton loops back on itself while no new orders are detected
-- `newOrder → instantiatedOperator` (TransitionNew): when a new order is found, an `Operator` is spawned and receives the Shopify credentials
+- `newOrder → instantiatedOperator` (Transition + TransitionNew): when a new order is found, an `Operator` is spawned and receives the Shopify endpoint and credentials
 - `instantiatedOperator → newOrder`: immediately after spawning, the Starter returns to watching for the next order
 
+A TransitionNew has no `MetricValue`, so on its own it would be valid whatever the metric says, together with the `noNewOrders` loop. The Transition between the same two states gives it the `newOrderFound` condition: the interpreter merges the two into one transition. See [TransitionNew](../transitions.md#transitionnew).
+
 This creates an event loop: one Operator per order, running in parallel, while the Starter keeps watching.
+
+### Retry with a timeout
+
+When Shopify cannot be reached, the Starter moves to `communicationError` and resets two clocks. It retries every 5 minutes; when the metric reports `timeout`, it gives up, but not before 30 minutes:
+
+```xml
+<Transition IdInputState="communicationError" IdOutputState="communicationError"
+  MetricValue="connectionError">
+  <ClockConstraint ClockExp="retryTimer &gt;= 5 min"/>
+  <ClockReset ClockVar="retryTimer"/>
+</Transition>
+<Transition IdInputState="communicationError" IdOutputState="newOrder"
+  IgnoreMinWait="true" MetricValue="connected"/>
+<Transition IdInputState="communicationError" IdOutputState="exception"
+  MetricValue="timeout">
+  <ClockConstraint ClockExp="communicationErrorTimer &gt;= 30 min"/>
+</Transition>
+```
+
+`retryTimer` is reset at each retry, so it measures the time since the last attempt; `communicationErrorTimer` is reset only on entering the state, so it measures the whole outage.
 
 ---
 
@@ -91,7 +117,7 @@ The flow is linear:
 8. Generate DDT document
 9. Generate invoice → `completed`
 
-Any step that fails transitions to `exception`. The `handleException` metric decides whether to retry or escalate to `manualIntervention`.
+The waiting states go to `exception` when their metric reports a problem (`error`, or `rejected` for the shipping approval). There, the `handleException` metric decides whether to start again from `getEcommOrder` after 5 minutes or escalate to `manualIntervention`.
 
 ---
 
@@ -103,7 +129,7 @@ This child automaton handles the synchronization sub-process triggered after the
 syncInvoiceHeader → syncDDTHeader → pickingListFromERP → pickingListToWMS → completed
 ```
 
-It is spawned by the Operator via TransitionNew, receives all required credentials and order data as input parameters, and reports its completion through its final state.
+It is spawned by the Operator via TransitionNew and receives the ERP and WMS credentials and the order data as input parameters. The Operator does not wait for it: it moves on to `waitingWMSforPicking`, where it waits for the effect of the child on the WMS (the picking confirmation) rather than for the child itself.
 
 ---
 
@@ -112,5 +138,6 @@ It is spawned by the Operator via TransitionNew, receives all required credentia
 - **Starter / Operator**: a long-running watcher spawning short-lived handlers
 - **Linear action pipeline**: states associated only with actions, no metric observation needed between steps
 - **Waiting states**: states associated with metrics that poll an external system until a condition is met (`pending` loops back, `confirmed` advances)
+- **Retry with a timeout**: two clocks, one for the pace of the retries and one for the total time allowed
 - **Exception handling with retry**: a dedicated `exception` state with a metric that decides whether to restart from the beginning or request manual intervention
 - **Parameter passing at spawn**: credentials and context passed from Starter to Operator, and from Operator to sub-process

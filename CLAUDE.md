@@ -167,8 +167,7 @@ Xal-designer-manual/
         ├── queries.md
         └── examples/
             ├── ecommerce.md
-            ├── patcher.md
-            └── c2_intercept.md
+            └── patcher.md
 ```
 
 ---

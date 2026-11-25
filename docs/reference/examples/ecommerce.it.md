@@ -4,6 +4,8 @@ Questo esempio illustra il pattern **Starter / Operator**: un automa persistente
 
 Il file `ecommerce_backoffice.xal` modella l'elaborazione backend degli ordini e-commerce, integrando un negozio Shopify con un ERP e un sistema di gestione magazzino (WMS).
 
+I frammenti qui sotto vengono da quel file, ridotti agli attributi che contano per ogni punto.
+
 ---
 
 ## Automi in questo file
@@ -39,6 +41,8 @@ Il global state memorizza le credenziali API e una lista degli ID degli ordini g
     <Transition IdInputState="newOrder" IdOutputState="newOrder"
       MetricValue="noNewOrders" IgnoreMinWait="true"/>
 
+    <Transition IdInputState="newOrder" IdOutputState="instantiatedOperator"
+      MetricValue="newOrderFound" IgnoreMinWait="true"/>
     <TransitionNew IdInputState="newOrder" IdOutputState="instantiatedOperator"
       IgnoreMinWait="true" Path="ecommerce_backoffice.xal" Type="Operator">
       <Input>
@@ -51,10 +55,32 @@ Il global state memorizza le credenziali API e una lista degli ID degli ordini g
 Le transizioni chiave sono:
 
 - `newOrder → newOrder` (MetricValue `noNewOrders`): l'automa torna su se stesso finché non vengono rilevati nuovi ordini
-- `newOrder → instantiatedOperator` (TransitionNew): quando viene trovato un nuovo ordine, viene creato un `Operator` che riceve le credenziali Shopify
+- `newOrder → instantiatedOperator` (Transition + TransitionNew): quando viene trovato un nuovo ordine, viene creato un `Operator` che riceve l'endpoint e le credenziali Shopify
 - `instantiatedOperator → newOrder`: immediatamente dopo la creazione, lo Starter torna a monitorare il prossimo ordine
 
+Una TransitionNew non ha `MetricValue`, quindi da sola sarebbe valida qualunque cosa dica la metrica, insieme al ciclo `noNewOrders`. La Transition tra gli stessi due stati le dà la condizione `newOrderFound`: l'interprete fonde le due in una sola transizione. Vedi [TransitionNew](../transitions.md#transitionnew).
+
 Questo crea un event loop: un Operator per ordine, eseguiti in parallelo, mentre lo Starter continua a monitorare.
+
+### Riprova con un limite di tempo
+
+Quando Shopify non risponde, lo Starter passa a `communicationError` e azzera due clock. Riprova ogni 5 minuti; quando la metrica riporta `timeout` si arrende, ma non prima di 30 minuti:
+
+```xml
+<Transition IdInputState="communicationError" IdOutputState="communicationError"
+  MetricValue="connectionError">
+  <ClockConstraint ClockExp="retryTimer &gt;= 5 min"/>
+  <ClockReset ClockVar="retryTimer"/>
+</Transition>
+<Transition IdInputState="communicationError" IdOutputState="newOrder"
+  IgnoreMinWait="true" MetricValue="connected"/>
+<Transition IdInputState="communicationError" IdOutputState="exception"
+  MetricValue="timeout">
+  <ClockConstraint ClockExp="communicationErrorTimer &gt;= 30 min"/>
+</Transition>
+```
+
+`retryTimer` si azzera a ogni tentativo, quindi misura il tempo dall'ultimo; `communicationErrorTimer` si azzera solo all'ingresso nello stato, quindi misura tutta l'interruzione.
 
 ---
 
@@ -91,7 +117,7 @@ Il flusso è lineare:
 8. Genera il documento DDT
 9. Genera la fattura → `completed`
 
-Qualsiasi passo che fallisce transita verso `exception`. La metric `handleException` decide se riprovare o escalare verso `manualIntervention`.
+Gli stati di attesa passano a `exception` quando la loro metric riporta un problema (`error`, o `rejected` per l'approvazione della spedizione). Lì la metric `handleException` decide se ripartire da `getEcommOrder` dopo 5 minuti o escalare verso `manualIntervention`.
 
 ---
 
@@ -103,7 +129,7 @@ Questo automa figlio gestisce il sotto-processo di sincronizzazione attivato dop
 syncInvoiceHeader → syncDDTHeader → pickingListFromERP → pickingListToWMS → completed
 ```
 
-Viene creato dall'Operator tramite TransitionNew, riceve tutte le credenziali richieste e i dati dell'ordine come parametri di input, e riporta il suo completamento tramite il suo stato finale.
+Viene creato dall'Operator tramite TransitionNew e riceve come parametri di input le credenziali dell'ERP e del WMS e i dati dell'ordine. L'Operator non lo aspetta: passa a `waitingWMSforPicking`, dove attende l'effetto del figlio sul WMS (la conferma di picking) e non il figlio stesso.
 
 ---
 
@@ -112,5 +138,6 @@ Viene creato dall'Operator tramite TransitionNew, riceve tutte le credenziali ri
 - **Starter / Operator**: un osservatore di lunga durata che crea gestori di breve durata
 - **Pipeline di action lineare**: stati associati solo ad action, nessuna osservazione di metric necessaria tra i passi
 - **Stati di attesa**: stati associati a metric che interrogano un sistema esterno finché una condizione non viene soddisfatta (`pending` torna in loop, `confirmed` avanza)
+- **Riprova con un limite di tempo**: due clock, uno per il ritmo dei tentativi e uno per il tempo totale concesso
 - **Gestione delle eccezioni con retry**: uno stato `exception` dedicato con una metric che decide se ripartire dall'inizio o richiedere intervento manuale
 - **Passaggio di parametri alla creazione**: credenziali e contesto passati dallo Starter all'Operator, e dall'Operator al sotto-processo
