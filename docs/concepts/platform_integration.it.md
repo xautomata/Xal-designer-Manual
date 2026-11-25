@@ -32,14 +32,14 @@ Questa connessione significa che gli automata rispondono agli eventi infrastrutt
 
 Lo XAL Designer è lo strumento usato per creare e modificare gli automata. Si connette a un repository Git contenente file `.xal` e fornisce una canvas visuale per modificare la logica degli automata.
 
-Le modifiche apportate nel designer vengono committate nel repository tramite un workflow Git standard. La piattaforma poi preleva i file aggiornati e li applica alle istanze di automaton in esecuzione.
+Le modifiche apportate nel designer vengono committate nel repository tramite un workflow Git standard. La piattaforma poi carica i file aggiornati.
 
 Il flusso complessivo è:
 
 1. Definire o modificare la logica dell'automaton nello XAL Designer.
 2. Committare e fare push delle modifiche nel repository.
-3. La piattaforma valida e distribuisce gli automata aggiornati.
-4. Le istanze in esecuzione iniziano ad applicare la nuova logica.
+3. La piattaforma carica e valida i file aggiornati.
+4. Le istanze in esecuzione riprendono dallo stato in cui erano e seguono la nuova logica. I loro clock ripartono da zero.
 
-!!! note
-    La piattaforma XAUTOMATA valida tutti i file XAL al momento del caricamento. Un file che non supera la validazione non verrà caricato, indipendentemente da ciò che mostra il designer.
+!!! warning
+    La piattaforma XAUTOMATA valida tutti i file XAL quando li carica. Se un file non supera la validazione, non parte nessun automaton, nemmeno quelli dei file validi caricati insieme. Fa fede il controllo della piattaforma, indipendentemente da ciò che mostra il designer.

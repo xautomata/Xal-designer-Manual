@@ -10,7 +10,7 @@ Un automaton modella il comportamento di un sistema reale come una sequenza di *
 
 In ogni momento, un automaton si trova esattamente in uno stato. Quando viene soddisfatta una condizione specifica — come una metric che raggiunge un certo valore, o il superamento di una soglia temporale — l'automaton passa da uno stato all'altro. Questo movimento è chiamato **Transition**.
 
-Ogni stato può essere associato a una **metric** da osservare o a un'**action** da eseguire. Le metrics leggono dati dal sistema monitorato. Le actions eseguono operazioni su di esso o su sistemi esterni.
+Ogni stato può avere un'**action** da eseguire, una **metric** da leggere, o entrambe. Le metrics leggono dati dal sistema monitorato. Le actions eseguono operazioni su di esso o su sistemi esterni.
 
 ---
 
@@ -36,7 +36,7 @@ Questo è ciò che rende gli automata scalabili: la logica viene definita una vo
 
 ## Automata che collaborano
 
-I processi complessi sono spesso modellati come **famiglie di automata** che collaborano. Un automaton padre orchestra il processo complessivo e crea automata figlio per gestire sotto-task specifici. Ogni figlio gira in modo indipendente, completa il proprio lavoro e riporta il suo stato finale al padre.
+I processi complessi sono spesso modellati come **famiglie di automata** che collaborano. Un automaton padre orchestra il processo complessivo e avvia automata figlio per gestire sotto-task specifici. Il padre segue un figlio leggendone lo stato, oppure aspetta che finisca (vedi [Famiglie di automata](families.md)).
 
 Ad esempio, un processo di patching IT potrebbe coinvolgere un automaton principale che coordina l'intera sequenza di patching, e automata figlio separati responsabili di rilocare i database, riciclare gli application pool e inviare notifiche a ogni step.
 

@@ -32,14 +32,14 @@ This connection means that automata respond to real infrastructure events in nea
 
 The XAL Designer is the tool used to create and modify automata. It connects to a Git repository containing `.xal` files and provides a visual canvas for editing automaton logic.
 
-Changes made in the designer are committed back to the repository through a standard Git workflow. The platform then picks up the updated files and applies them to the running automaton instances.
+Changes made in the designer are committed back to the repository through a standard Git workflow. The platform then loads the updated files.
 
 The overall flow is:
 
 1. Define or modify automaton logic in the XAL Designer.
 2. Commit and push changes to the repository.
-3. The platform validates and deploys the updated automata.
-4. Running instances begin applying the new logic.
+3. The platform loads and validates the updated files.
+4. Running instances resume from the state they were in and follow the new logic. Their clocks start again from zero.
 
-!!! note
-    The XAUTOMATA platform validates all XAL files at load time. A file that does not pass validation will not be loaded, regardless of what the designer displays.
+!!! warning
+    The XAUTOMATA platform validates all XAL files when it loads them. If one file does not pass validation, no automaton starts, not even those of the valid files loaded with it. The platform's check is the one that counts, regardless of what the designer displays.

@@ -12,7 +12,7 @@ Every automaton has exactly one **initial state** — the state in which it begi
 
 All other states are intermediate states, representing the active phases of the process.
 
-In the XAL Designer, states are displayed as colored nodes on the canvas:
+In the XAL Designer, the color of the node border and of its left stripe shows the kind of state:
 
 | Color | Meaning |
 |---|---|
@@ -20,7 +20,7 @@ In the XAL Designer, states are displayed as colored nodes on the canvas:
 | Red | Final state |
 | Blue | Intermediate state |
 
-Each state can optionally be associated with a **metric** or an **action**. When the automaton enters a state that has a metric associated, it begins observing that metric. When it enters a state with an action, it executes that action.
+A state can have an **action**, a **metric**, or both. When the automaton enters the state, it runs the action first, then the metric, once each. To read the metric again, the automaton must enter the state again, for example through a [self-loop](#self-loops).
 
 ---
 
@@ -39,29 +39,42 @@ When the automaton is in the input state and all transition conditions are met, 
 
 ---
 
+## Choosing the next transition
+
+After running the action and the metric of a state, the automaton looks at the transitions that leave it:
+
+- if **exactly one** transition is valid, it fires;
+- if the metric value matches a transition but its clock constraints do not hold yet, the automaton waits in the state until they do;
+- if **no** transition expects the metric value, or **two or more** are valid at the same moment, the automaton stops with an error.
+
+Design each state so that every value the metric can return leads to exactly one transition.
+
+---
+
 ## Transition types
 
-The XAL Designer supports four types of transitions.
+The XAL Designer creates three types of transitions. A fourth one, TransitionX, can only be read.
 
 **Transition** is the standard type. It fires when a specific metric value is observed, when a clock constraint is met, or unconditionally if no conditions are defined.
 
-**TransitionNew** spawns a new child automaton when it fires. The parent automaton continues in its output state while the child runs independently. This is how automaton families are built.
+**TransitionNew** starts a child automaton when it fires. The parent moves to its output state, and the child runs on its own. This is how automaton families are built.
 
-**TransitionNewMulti** works like TransitionNew but spawns multiple child instances at once, one for each item in a loop variable.
+**TransitionNewMulti** works like TransitionNew, but starts one child for each item of a list held in a Global State of the parent.
 
-**TransitionX** is an extended transition type that combines features of the above. It is used for advanced scenarios.
+**TransitionX** is an older form that combines a transition and the start of a child. The platform still runs it, but you cannot create one in the designer.
+
+See [Transition Types](../designer/transitions/types.md) for how each type looks in the designer.
 
 ---
 
 ## Self-loops
 
-A transition can have the same state as both its input and output. This is called a **self-loop**. Self-loops are commonly used to keep the automaton in a waiting state, polling a metric until a condition changes.
+A transition can have the same state as both its input and output. This is called a **self-loop**. Self-loops are commonly used to keep the automaton in a waiting state, polling a metric until a condition changes: each time the self-loop fires, the action and the metric of the state run again.
 
 ---
 
-## The Ignore Min Wait option
+## Min Wait and Ignore Min Wait
 
-Each transition has a minimum wait time that prevents it from firing too rapidly. The **Ignore Min Wait** option bypasses this wait, allowing the transition to fire immediately. It is typically enabled when a transition should react instantly to a change.
+The **min wait** is the time, in seconds, an automaton must spend in a state before it can leave it. It is set by whoever starts the automaton: for a child automaton, it is the **Target Min Wait** of the TransitionNew that started it. With no min wait, or 0, nothing is delayed.
 
-!!! info
-    The exact behavior of Min Wait and its interaction with Ignore Min Wait in specific scenarios is tracked as an open question. See `qa.md` — Q4.
+The **Ignore Min Wait** option exempts one transition from it: the transition can fire as soon as its conditions hold. Enable it when a transition must react at once, for example to an error.

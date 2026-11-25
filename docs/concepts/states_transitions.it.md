@@ -12,7 +12,7 @@ Ogni automaton ha esattamente uno **stato iniziale** — lo stato in cui si trov
 
 Tutti gli altri stati sono stati intermedi, che rappresentano le fasi attive del processo.
 
-Nello XAL Designer, gli stati sono mostrati come nodi colorati sulla canvas:
+Nello XAL Designer, il colore del bordo del nodo e della sua striscia a sinistra indica il tipo di stato:
 
 | Colore | Significato |
 |---|---|
@@ -20,7 +20,7 @@ Nello XAL Designer, gli stati sono mostrati come nodi colorati sulla canvas:
 | Rosso | Stato finale |
 | Blu | Stato intermedio |
 
-Ogni stato può essere opzionalmente associato a una **metric** o a un'**action**. Quando l'automaton entra in uno stato che ha una metric associata, inizia a osservare quella metric. Quando entra in uno stato con un'action, esegue quell'action.
+Uno stato può avere un'**action**, una **metric**, o entrambe. Quando l'automaton entra nello stato, esegue prima l'action, poi la metric, una volta ciascuna. Per leggere di nuovo la metric, l'automaton deve rientrare nello stato, per esempio con un [self-loop](#self-loop).
 
 ---
 
@@ -39,29 +39,42 @@ Quando l'automaton si trova nello stato di input e tutte le condizioni della Tra
 
 ---
 
+## Come viene scelta la prossima Transition
+
+Dopo aver eseguito l'action e la metric di uno stato, l'automaton guarda le Transitions che ne escono:
+
+- se è valida **una sola** Transition, questa si attiva;
+- se il valore della metric corrisponde a una Transition ma i suoi clock constraint non sono ancora soddisfatti, l'automaton aspetta nello stato finché non lo diventano;
+- se **nessuna** Transition prevede il valore della metric, o ne sono valide **due o più** nello stesso momento, l'automaton si ferma con un errore.
+
+Progetta ogni stato in modo che ogni valore che la metric può restituire porti a una sola Transition.
+
+---
+
 ## Tipi di Transition
 
-Lo XAL Designer supporta quattro tipi di Transition.
+Lo XAL Designer crea tre tipi di Transition. Un quarto, TransitionX, si può solo leggere.
 
 **Transition** è il tipo standard. Si attiva quando viene osservato un valore di metric specifico, quando un clock constraint è soddisfatto, o incondizionatamente se non sono definite condizioni.
 
-**TransitionNew** crea un nuovo automaton figlio quando si attiva. L'automaton padre continua nel suo stato di output mentre il figlio gira indipendentemente. Così si costruiscono le famiglie di automata.
+**TransitionNew** avvia un automaton figlio quando si attiva. Il padre passa al suo stato di output e il figlio gira per conto suo. Così si costruiscono le famiglie di automata.
 
-**TransitionNewMulti** funziona come TransitionNew ma crea più istanze figlio contemporaneamente, una per ogni elemento in una variabile loop.
+**TransitionNewMulti** funziona come TransitionNew, ma avvia un figlio per ogni elemento di una lista contenuta in un Global State del padre.
 
-**TransitionX** è un tipo di Transition esteso che combina le caratteristiche dei tipi precedenti. Viene usato per scenari avanzati.
+**TransitionX** è una forma più vecchia che unisce una Transition e l'avvio di un figlio. La piattaforma la esegue ancora, ma non puoi crearne una dal designer.
+
+Vedi [Tipi di Transizione](../designer/transitions/types.md) per come appare ogni tipo nel designer.
 
 ---
 
 ## Self-loop
 
-Una Transition può avere lo stesso stato sia come input che come output. Questa si chiama **self-loop**. I self-loop vengono comunemente usati per mantenere l'automaton in uno stato di attesa, interrogando una metric finché una condizione non cambia.
+Una Transition può avere lo stesso stato sia come input che come output. Questa si chiama **self-loop**. I self-loop vengono comunemente usati per mantenere l'automaton in uno stato di attesa, interrogando una metric finché una condizione non cambia: ogni volta che il self-loop si attiva, l'action e la metric dello stato vengono eseguite di nuovo.
 
 ---
 
-## L'opzione Ignore Min Wait
+## Min Wait e Ignore Min Wait
 
-Ogni Transition ha un tempo di attesa minimo che impedisce che si attivi troppo rapidamente. L'opzione **Ignore Min Wait** bypassa questa attesa, consentendo alla Transition di attivarsi immediatamente. Viene tipicamente abilitata quando una Transition deve reagire istantaneamente a un cambiamento.
+Il **min wait** è il tempo, in secondi, che un automaton deve passare in uno stato prima di poterne uscire. Lo stabilisce chi avvia l'automaton: per un automaton figlio è il **Target Min Wait** della TransitionNew che lo ha avviato. Senza min wait, o con 0, nulla viene ritardato.
 
-!!! info
-    Il comportamento esatto di Min Wait e la sua interazione con Ignore Min Wait in scenari specifici è tracciato come domanda aperta. Vedi `qa.md` — Q4.
+L'opzione **Ignore Min Wait** ne esenta una Transition: la Transition può attivarsi appena le sue condizioni sono soddisfatte. Abilitala quando una Transition deve reagire subito, per esempio a un errore.

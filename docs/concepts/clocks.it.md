@@ -6,9 +6,9 @@ I clock consentono a un automaton di misurare il tempo trascorso e prendere deci
 
 ## Cos'è un clock
 
-Un clock è una variabile timer definita a livello di automaton. Inizia a contare quando viene azzerato, e il suo valore corrente può essere letto in qualsiasi momento da una condizione di transizione.
+Un clock è una variabile timer definita a livello di automaton. Ogni clock parte da zero quando l'automaton si avvia, e di nuovo a ogni azzeramento. Il suo valore corrente può essere letto in qualsiasi momento da una condizione di transizione.
 
-I clock non hanno un'unità definita nell'automaton stesso — l'unità viene specificata quando si scrive il vincolo del clock. In pratica, i valori dei clock vengono confrontati con costanti con nome come `T_max_wait` o `T_handshake_timeout`, i cui valori effettivi sono configurati a livello di piattaforma.
+I clock non hanno un'unità definita nell'automaton stesso — l'unità viene specificata quando si scrive il vincolo del clock: secondi, minuti o ore, secondi se non ne indichi nessuna. Il valore con cui confrontare è un numero, oppure un Global State dell'automaton come `T_max_wait`, così lo stesso automaton può usare timeout diversi per istanze diverse.
 
 ---
 
@@ -19,7 +19,9 @@ I clock vengono usati in due modi nelle transizioni.
 Un **clock constraint** è una condizione che deve essere soddisfatta affinché la Transition si attivi. Ad esempio:
 
 - `clk_retry >= 5 min` — la Transition si attiva solo dopo che sono trascorsi 5 minuti dall'ultimo azzeramento del clock
-- `clk_handshake < T_handshake_timeout` — la Transition si attiva solo se il clock dell'handshake non ha ancora superato il suo timeout
+- `clk_handshake < T_handshake_timeout` — la Transition si attiva solo se il clock dell'handshake non ha ancora superato il timeout contenuto nel Global State `T_handshake_timeout`
+
+Una Transition con più clock constraint si attiva solo quando sono soddisfatti tutti.
 
 Un **clock reset** riavvia un clock quando una Transition si attiva. I reset vengono usati per misurare il tempo a partire da un evento specifico — ad esempio, azzerando un clock di retry ogni volta che un tentativo di connessione fallisce.
 
@@ -43,4 +45,4 @@ Questo pattern consente agli automata di implementare logiche di retry, watchdog
 
 I clock sono definiti a livello di automaton, non a livello di stato o Transition. Ogni clock usato in qualsiasi Transition di un automaton deve essere dichiarato nella lista dei clock dell'automaton.
 
-Nello XAL Designer, i clock vengono gestiti dal pannello **Clock Vars** nella barra laterale sinistra.
+Nello XAL Designer, i clock vengono gestiti dal pannello **Clock Vars** nella barra laterale sinistra (vedi [Variabili Clock](../designer/automata/clocks.md)).

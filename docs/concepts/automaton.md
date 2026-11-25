@@ -10,7 +10,7 @@ An automaton models the behavior of a real-world system as a sequence of **state
 
 At any given moment, an automaton is in exactly one state. When a specific condition is met — such as a metric reaching a certain value, or a time threshold being exceeded — the automaton moves from one state to another. This movement is called a **transition**.
 
-Each state can be associated with a **metric** to observe or an **action** to execute. Metrics read data from the monitored system. Actions perform operations on it or on external systems.
+Each state can have an **action** to execute, a **metric** to read, or both. Metrics read data from the monitored system. Actions perform operations on it or on external systems.
 
 ---
 
@@ -36,7 +36,7 @@ This is what makes automata scalable: you define the logic once, and the platfor
 
 ## Automata working together
 
-Complex processes are often modeled as **families of automata** that collaborate. A parent automaton orchestrates the overall process and spawns child automata to handle specific sub-tasks. Each child runs independently, completes its work, and reports its final state back to the parent.
+Complex processes are often modeled as **families of automata** that collaborate. A parent automaton orchestrates the overall process and starts child automata to handle specific sub-tasks. The parent either follows a child by reading its state, or waits for it to finish (see [Automaton Families](families.md)).
 
 For example, an IT patching process might involve a main automaton that coordinates the overall patching sequence, and separate child automata responsible for relocating databases, recycling application pools, and sending notifications at each step.
 

@@ -8,9 +8,9 @@ Actions e metrics sono i due tipi di funzione che connettono un automaton al mon
 
 Una metric è una funzione che **legge dati** da un sistema monitorato e restituisce un valore.
 
-Quando un automaton entra in uno stato associato a una metric, inizia a osservare quella metric. Il valore restituito dalla metric viene quindi confrontato con i valori di metric definiti sulle transizioni uscenti da quello stato — e la transizione corrispondente si attiva.
+Quando un automaton entra in uno stato associato a una metric, esegue la metric una volta. Il valore restituito dalla metric viene quindi confrontato con i valori di metric definiti sulle transizioni uscenti da quello stato — e la transizione corrispondente si attiva. Per leggere di nuovo la metric, l'automaton deve rientrare nello stato, di solito con un self-loop.
 
-Le metrics leggono tipicamente lo stato operativo di un altro automaton o di un oggetto infrastrutturale monitorato. Lo fanno tramite una query, scritta in una sintassi simile a SQL, che recupera il global state corrente del target.
+Molte metrics leggono lo stato operativo di un altro automaton. Lo fanno tramite una query, scritta in una sintassi simile a SQL, che recupera il global state corrente del target.
 
 Una metric definisce anche l'insieme dei valori che può restituire, chiamato **enumerazione**. Ogni valore nell'enumerazione corrisponde a un possibile esito — e tipicamente a una Transition che gestisce quell'esito.
 
@@ -22,18 +22,20 @@ Un'action è una funzione che **esegue un'operazione** su un sistema esterno.
 
 Quando un automaton entra in uno stato associato a un'action, esegue quell'action. Le actions possono interagire con sistemi esterni come piattaforme ERP, sistemi di gestione magazzino, strumenti di ticketing o API personalizzate.
 
-A differenza delle metrics, le actions non restituiscono un valore che guida direttamente le transizioni. La Transition in uscita da uno stato con action è determinata dall'esito dell'action, gestito separatamente.
+Un'action non sceglie la prossima Transition: lo fa solo il valore della metric. Un'action può scrivere i suoi risultati nel global state tramite i parametri output. Uno stato con un'action e senza metric esce con una Transition senza Metric Value.
 
 ---
 
 ## Come metrics e actions lavorano insieme
 
-In pratica, uno stato ha spesso sia una metric che un'action associate. L'action svolge il lavoro, e la metric monitora il risultato finché non viene rilevata una condizione di completamento o di errore.
+Uno stato può avere sia un'action che una metric. Prima viene eseguita l'action, poi la metric legge il risultato.
+
+La metric viene eseguita una sola volta per ogni ingresso nello stato, quindi un processo che deve aspettare un sistema esterno di solito divide il lavoro in due stati: uno che esegue l'action, e uno che controlla il risultato con una metric e un self-loop finché non viene rilevata una condizione di completamento o di errore.
 
 Ad esempio, in un automaton per l'elaborazione ordini:
 
 - Uno stato con action invia una lista di picking a un sistema di gestione magazzino.
-- L'automaton si sposta poi in uno stato di attesa dove una metric verifica continuamente se il WMS ha confermato il picking.
+- L'automaton si sposta poi in uno stato di attesa dove una metric verifica se il WMS ha confermato il picking, e un self-loop ripete il controllo finché non lo ha fatto.
 - Quando la metric restituisce `confirmed`, la Transition si attiva e il processo continua.
 
 ---
@@ -49,8 +51,20 @@ Il group label è un meccanismo di binding che collega la query all'istanza corr
 
 ---
 
-## Tipi di dato
+## Parametri input e output
 
-Sia le metrics che le actions possono trasferire dati tra automata usando parametri **input** e **output**. I parametri input forniscono valori alla funzione dal global state dell'automaton. I parametri output scrivono i risultati nel global state al termine dell'esecuzione della funzione.
+Sia le metrics che le actions scambiano dati con l'automaton tramite parametri **input** e **output**. I parametri input forniscono valori alla funzione dal global state dell'automaton. I parametri output scrivono i risultati nel global state al termine dell'esecuzione della funzione.
 
-Questo meccanismo permette agli automata di condividere contesto — ad esempio, passando un ID ordine da un automaton padre a un automaton figlio al momento della sua creazione.
+Per passare dati a un automaton figlio quando parte, per esempio un ID ordine, usa invece i parametri input della [TransitionNew](../designer/transitions/transition_new.md#parametri-di-input).
+
+---
+
+## Funzioni che eseguono un automaton
+
+Di solito un'action o una metric esegue un metodo Java. Può anche eseguire **un altro automaton**: l'automaton chiamante aspetta nello stato finché quello chiamato non finisce, poi ne riceve i valori di output. Vedi [Famiglie di automata](families.md#eseguire-un-automaton-come-passo).
+
+---
+
+## Quando una funzione fallisce
+
+Se il metodo segnala un errore temporaneo, la piattaforma lo riesegue ogni minuto, fino a dieci volte. Dopo, o dopo un errore fatale, l'istanza dell'automaton si ferma e aspetta un intervento manuale.

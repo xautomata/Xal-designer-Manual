@@ -6,9 +6,9 @@ Clocks allow an automaton to measure elapsed time and make decisions based on ho
 
 ## What a clock is
 
-A clock is a timer variable defined at the automaton level. It starts counting when it is reset, and its current value can be read at any time by a transition condition.
+A clock is a timer variable defined at the automaton level. Every clock starts from zero when the automaton starts, and again each time it is reset. Its current value can be read at any time by a transition condition.
 
-Clocks have no unit defined in the automaton itself — the unit is specified when the clock constraint is written. In practice, clock values are compared against named constants such as `T_max_wait` or `T_handshake_timeout`, whose actual values are configured at the platform level.
+Clocks have no unit defined in the automaton itself — the unit is specified when the clock constraint is written: seconds, minutes or hours, seconds if you set none. The value to compare with is a number, or a Global State of the automaton such as `T_max_wait`, so the same automaton can use different timeouts for different instances.
 
 ---
 
@@ -19,7 +19,9 @@ Clocks are used in two ways in transitions.
 A **clock constraint** is a condition that must be satisfied for the transition to fire. For example:
 
 - `clk_retry >= 5 min` — the transition fires only after 5 minutes have elapsed since the clock was last reset
-- `clk_handshake < T_handshake_timeout` — the transition fires only if the handshake clock has not yet exceeded its timeout
+- `clk_handshake < T_handshake_timeout` — the transition fires only if the handshake clock has not yet exceeded the timeout held in the `T_handshake_timeout` Global State
+
+A transition with several clock constraints fires only when all of them hold.
 
 A **clock reset** restarts a clock when a transition fires. Resets are used to measure time from a specific event — for example, resetting a retry clock every time a connection attempt fails.
 
@@ -43,4 +45,4 @@ This pattern allows automata to implement retry logic, watchdog timers, and esca
 
 Clocks are defined at the automaton level, not at the state or transition level. Every clock used in any transition of an automaton must be declared in the automaton's clock list.
 
-In the XAL Designer, clocks are managed from the **Clock Vars** panel in the left sidebar.
+In the XAL Designer, clocks are managed from the **Clock Vars** panel in the left sidebar (see [Clock Variables](../designer/automata/clocks.md)).
