@@ -7,7 +7,7 @@ Le Actions sono definite all'interno dell'elemento `<Functions>` e rappresentano
 ## Elemento Action
 
 ```xml
-<Action Id="createOrderInERP" Type="object" MinWait="0">
+<Action Id="createOrderInERP" Type="object">
   <System
     Name="createOrderInERP"
     Class="erp.TeamSystemConnector"
@@ -29,8 +29,8 @@ Le Actions sono definite all'interno dell'elemento `<Functions>` e rappresentano
 | Attributo | Obbligatorio | Descrizione |
 |---|---|---|
 | `Id` | Sì | Identificatore univoco all'interno dell'elemento `<Functions>`. Referenziato dagli attributi `IdAction` degli stati. |
-| `Type` | Sì | Contesto di esecuzione: `object` per le action legate a oggetti infrastrutturali monitorati, `automaton` per le action che interagiscono con altre istanze di automa. |
-| `MinWait` | No | Intervallo minimo in millisecondi tra esecuzioni successive di questa action. |
+| `Type` | Sì | Cosa esegue la action: `object` per un metodo Java, `automaton` per un altro automa. Vedi [Tipo automaton](#tipo-automaton). |
+| `MinWait` | No | Solo con `Type="automaton"`: il min wait, in secondi, dell'automa che la action avvia. Vedi [Min Wait e Ignore Min Wait](../designer/transitions/types.md#min-wait-e-ignore-min-wait). Sulle action `object` l'interprete lo ignora. |
 
 ---
 
@@ -38,21 +38,31 @@ Le Actions sono definite all'interno dell'elemento `<Functions>` e rappresentano
 
 ### `<System>`
 
-Specifica l'implementazione runtime della action.
+Indica cosa esegue la action.
 
-| Attributo | Descrizione |
-|---|---|
-| `Name` | Il nome del metodo o della funzione da invocare |
-| `Class` | Il nome completo della classe che contiene l'implementazione |
-| `Path` | Il percorso del file dell'implementazione, relativo alla root del repository |
+| Attributo | `Type="object"` | `Type="automaton"` |
+|---|---|---|
+| `Name` | Il nome del metodo | L'`Id` dell'automa da avviare |
+| `Class` | Il nome completo della classe | Il nome del file XAL che contiene l'automa |
+| `Path` | Il percorso del file `.java` nel repository | Non usato |
+
+Il metodo deve essere `public static`. L'interprete carica la classe dal suo classpath, che comprende i file jar elencati nell'attributo `parameter` di `<XAL>` (vedi [Struttura del file XAL](file_structure.md#elemento-radice)): a runtime il file `.java` nel repository non serve.
 
 ### `<Query>`
 
-Un'espressione opzionale simile a SQL che fornisce dati di contesto prima dell'esecuzione della action. Utilizzata da alcuni tipi di action per recuperare lo stato dal database della piattaforma.
+Una query opzionale sullo stato di altri automi. L'interprete la esegue prima della action e ne passa il risultato al metodo come primo argomento, un `list[string]`. Vedi [Sintassi delle query](queries.md).
+
+### `<DataSource>`
+
+Un riferimento opzionale a una sorgente dati della piattaforma, tramite il suo codice. L'interprete passa la sorgente dati al metodo come argomento, dopo il risultato della query.
+
+```xml
+<DataSource Code="erp-production"/>
+```
 
 ### `<Input>`
 
-Mappa le variabili del global state dell'automa nei parametri di input della action.
+Elenca le variabili del global state passate alla action. Vedi [Passaggio di parametri](parameters.md#parametri-di-input).
 
 ```xml
 <Input>
@@ -62,7 +72,7 @@ Mappa le variabili del global state dell'automa nei parametri di input della act
 
 ### `<Output>`
 
-Mappa i valori di ritorno della action nel global state dell'automa.
+Elenca le variabili del global state in cui la action scrive il suo risultato. Vedi [Passaggio di parametri](parameters.md#parametri-di-output).
 
 ```xml
 <Output>
@@ -70,20 +80,32 @@ Mappa i valori di ritorno della action nel global state dell'automa.
 </Output>
 ```
 
-### `<Async>`
+---
 
-Contrassegna la action come asincrona e imposta un timeout:
+## Tipo automaton
+
+Con `Type="automaton"` la action avvia un altro automa come passo di quello corrente: l'automa corrente aspetta che finisca (vedi [Famiglie di automata](../concepts/families.md)).
 
 ```xml
-<Async TimeoutSec="30"/>
+<Action Id="relocate" Type="automaton" MinWait="60">
+  <System Name="RelocateDb" Class="patcher.xal"/>
+  <Input>
+    <Parameter LocalVariable="DbHostName" TargetVariable="DbHostName"/>
+  </Input>
+  <Output>
+    <Parameter LocalVariable="relocationResult" TargetVariable="result"/>
+  </Output>
+</Action>
 ```
+
+`Name` e `Class` possono anche prendere il valore di una variabile del global state, scritta come `this.GLOBALSTATE_<nome>`: l'automa e il file si leggono da quella variabile quando la action viene eseguita.
 
 ---
 
 ## Note
 
 - Sia `<Input>` che `<Output>` sono opzionali. Una action che non ha effetti collaterali sul global state dell'automa può ometterli.
-- Il `Class` e il `Path` in `<System>` si riferiscono a implementazioni disponibili nell'ambiente runtime della piattaforma. Il designer avvisa se il file non viene trovato nel repository corrente, ma l'automa può comunque funzionare se la classe esiste a runtime.
+- Il designer avvisa se il file `.java` non viene trovato nel repository corrente, ma l'automa può comunque funzionare se la classe esiste a runtime.
 
 !!! info
-    Per informazioni su quali classi di sistema sono disponibili nel proprio deployment, contattare il team di delivery XAUTOMATA. Vedere anche `qa.md` — Q15.
+    Per informazioni su quali classi di sistema sono disponibili nel proprio deployment, contattare il team di delivery XAUTOMATA.

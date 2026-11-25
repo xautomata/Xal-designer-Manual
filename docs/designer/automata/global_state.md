@@ -58,4 +58,4 @@ Global state variables are referenced in:
 - **Clock constraints** — when a variable stores a threshold value used in a time condition
 
 !!! info
-    When you pick a global state variable in one of these fields, the XAL refers to it as `this.GLOBALSTATE_<name>`. The designer adds this prefix for you — you never need to type it manually.
+    In the parameters, the XAL refers to a variable by its name. In clock constraints, queries, and the file or automaton chosen from **Global States**, it refers to it as `this.GLOBALSTATE_<name>`. The designer adds this prefix for you — you never need to type it manually (see [Referencing variables](../../reference/global_state_clocks.md#referencing-variables)).

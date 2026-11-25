@@ -7,7 +7,7 @@ Metrics are defined within the `<Functions>` element and represent data-reading 
 ## Metric element
 
 ```xml
-<Metric Id="checkPickingConfirmation" Type="object" MinWait="0">
+<Metric Id="checkPickingConfirmation" Type="object">
   <System
     Name="checkPickingConfirmation"
     Class="wms.WaterFallConnector"
@@ -38,8 +38,8 @@ Metrics are defined within the `<Functions>` element and represent data-reading 
 | Attribute | Required | Description |
 |---|---|---|
 | `Id` | Yes | Unique identifier within `<Functions>`. Referenced by state `IdMetric` attributes. |
-| `Type` | No | Execution context: `object` for metrics tied to monitored objects, `automaton` for metrics reading other automaton instances directly. |
-| `MinWait` | No | Minimum interval in milliseconds between successive evaluations of this metric. |
+| `Type` | No | What the metric runs: `object` for a Java method, `automaton` for another automaton, as for [actions](actions.md#type-automaton). |
+| `MinWait` | No | Only with `Type="automaton"`: the min wait, in seconds, of the automaton the metric starts. The interpreter ignores it on `object` metrics. |
 
 ---
 
@@ -47,12 +47,12 @@ Metrics are defined within the `<Functions>` element and represent data-reading 
 
 ### `<System>`
 
-Specifies the runtime implementation.
+Specifies what the metric runs, as for actions (see [Actions](actions.md#system)).
 
 | Attribute | Description |
 |---|---|
-| `Name` | The method name to invoke |
-| `Class` | The fully qualified class name |
+| `Name` | The method name to invoke (with `Type="automaton"`, the automaton to start) |
+| `Class` | The fully qualified class name (with `Type="automaton"`, the XAL file) |
 | `Path` | The implementation file path |
 
 ### `<Query>`

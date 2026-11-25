@@ -22,7 +22,7 @@ Gli States sono definiti all'interno dell'elemento `<States>` e rappresentano le
 | `Id` | Sì | Identificatore univoco dello stato all'interno dell'automa. Referenziato dalle transizioni e dalle dichiarazioni di stato iniziale/finale. |
 | `IdMetric` | No | ID della funzione `<Metric>` da osservare mentre l'automa si trova in questo stato. |
 | `IdAction` | No | ID della funzione `<Action>` da eseguire quando l'automa entra in questo stato. |
-| `Starred` | No | Se `true`, contrassegna lo stato come starred. Usato come marcatore visivo nel XAL Designer. |
+| `Starred` | No | Se `true`, contrassegna lo stato come starred. Vedi [Stati starred](#stati-starred). |
 | `style` | No | Oggetto JSON che memorizza la posizione del nodo sul canvas (`x`, `y`). Gestito automaticamente dal designer — non modificare manualmente. |
 
 Uno stato può avere sia `IdMetric` che `IdAction` definiti simultaneamente.
@@ -61,15 +61,17 @@ Un automa smette di elaborare quando raggiunge uno qualsiasi dei suoi stati fina
 
 | Colore | Tipo di stato |
 |---|---|
-| Bordo verde | Stato iniziale |
-| Bordo e riempimento rosso/bordeaux | Stato finale |
-| Testo blu, riempimento grigio | Stato intermedio |
+| Verde | Stato iniziale |
+| Bordeaux | Stato finale |
+| Blu | Stato intermedio |
 
 ---
 
 ## Stati starred
 
-L'attributo `Starred` viene impostato tramite l'interruttore ★ nel pannello di configurazione dello stato del XAL Designer. Il suo comportamento a runtime dipende dalla piattaforma.
+Uno stato starred segna una fase che la piattaforma deve conoscere. Quando la coda dei processi della piattaforma è configurata, a ogni ciclo l'interprete le invia le istanze che si trovano in uno stato starred, con i loro dati.
 
-!!! info
-    L'uso esatto di `Starred` a runtime è tracciato come una domanda aperta. Vedere `qa.md` — Q1.
+L'attributo `Starred` viene impostato tramite l'interruttore ★ nel pannello di configurazione dello stato del XAL Designer (vedi [Creare uno Stato](../designer/states/creating.md)).
+
+!!! note
+    `Starred` su una variabile di stato globale è un'altra cosa: aggiunge il valore della variabile ai messaggi di log dell'interprete sull'istanza (vedi [Global State](global_state_clocks.md#attributi-di-variable)).

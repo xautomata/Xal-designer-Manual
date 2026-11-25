@@ -58,4 +58,4 @@ Le variabili di stato globale sono referenziate in:
 - **Vincoli Clock** — quando una variabile memorizza un valore soglia usato in una condizione temporale
 
 !!! info
-    Quando scegli una variabile di stato globale in uno di questi campi, l'XAL la indica come `this.GLOBALSTATE_<nome>`. Il prefisso lo aggiunge il designer — non è mai necessario digitarlo a mano.
+    Nei parametri, l'XAL indica una variabile con il suo nome. Nei vincoli Clock, nelle query e nel file o nell'automa scelti da **Global States**, la indica come `this.GLOBALSTATE_<nome>`. Il prefisso lo aggiunge il designer — non è mai necessario digitarlo a mano (vedi [Referenziare le variabili](../../reference/global_state_clocks.md#referenziare-le-variabili)).

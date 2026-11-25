@@ -14,6 +14,8 @@ The `<Automaton>` element is the top-level container for a single automaton defi
 
 ## Child elements
 
+The child elements can appear in any order (see [File Structure](file_structure.md#order-of-elements-and-attributes)).
+
 | Element | Required | Description |
 |---|---|---|
 | `<Functions>` | Yes | Contains `<Action>` and `<Metric>` definitions. Must be present even if empty. |
@@ -59,7 +61,7 @@ An automaton with two states and one transition:
 
 ## Multiple automata in one file
 
-A single XAL file commonly contains a family of related automata. The parent automaton references children by their `Id` in `TransitionNew` elements, and children reference the parent through metric queries.
+A single XAL file commonly contains a family of related automata. The parent automaton references children by their `Id` in `TransitionNew` elements, or in actions and metrics with `Type="automaton"`, and children reference the parent through metric queries.
 
 ```xml
 <XAL>

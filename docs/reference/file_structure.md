@@ -20,13 +20,17 @@ The root element of every XAL file is `<XAL>`. It contains one or more `<Automat
 </XAL>
 ```
 
-The optional `parameter` attribute on `<XAL>` specifies the base path used to resolve relative file references in `TransitionNew` elements.
+The optional `parameter` attribute on `<XAL>` sets where the interpreter finds the Java code of the file's actions and metrics. It is a list separated by `;`: each item is a `.jar` file, or a folder ending with `/` whose `.jar` files are all used.
+
+```xml
+<XAL parameter="/opt/xautomata/lib/connectors.jar;/opt/xautomata/lib/custom/">
+```
 
 ---
 
 ## Automaton structure
 
-Each `<Automaton>` element contains the following child elements, all at the same level:
+Each `<Automaton>` element contains the following child elements, all at the same level and in any order:
 
 | Element | Required | Description |
 |---|---|---|
@@ -40,16 +44,28 @@ Each `<Automaton>` element contains the following child elements, all at the sam
 
 ---
 
+## Order of elements and attributes
+
+The order of elements and attributes has no effect on the interpreter. The XAL Designer always writes them in the same order, so that two versions of a file are easy to compare:
+
+- inside `<Automaton>`: `GlobalState`, `Clocks`, `Functions`, `States`, `InitialState`, `FinalStates`, `Transitions`;
+- inside `<Functions>`: all the actions, then all the metrics;
+- inside `<Transitions>`: all the `Transition` elements, then `TransitionNew`, `TransitionNewMulti` and `TransitionX`.
+
+When you save a file written by hand or by another tool, the designer rewrites it in this order. The content does not change.
+
+---
+
 ## File naming and organization
 
 XAL files use the `.xal` extension. Multiple automata are typically grouped in a single file when they form a family — a parent automaton and its related children.
 
-Files are organized in a directory structure within the repository. `TransitionNew` elements reference child automata by file name and automaton ID, using a path relative to the current file's location.
+Files are organized in a directory structure within the repository. `TransitionNew` elements reference child automata by file name (`Path`) and automaton ID (`Type`). See [Transitions](transitions.md#transitionnew).
 
 ---
 
 ## Validation
 
-XAL files are validated by the XAUTOMATA platform at load time. A file that does not pass validation is not loaded, and its automata are not executed.
+XAL files are validated by the XAUTOMATA platform at load time, against the schema of the XAL language. A file that does not pass validation is not loaded, and none of its automata is executed. Elements or attributes that the schema does not know, a missing required element or a reference to a state that does not exist all make the file invalid.
 
 The XAL Designer performs backend validation as part of the commit process, before pushing changes to the repository. See [Commit and Push](../designer/publishing/commit.md) for details.

@@ -12,7 +12,7 @@ All transition types share these attributes:
 |---|---|---|
 | `IdInputState` | Yes | ID of the state the automaton must be in for the transition to fire |
 | `IdOutputState` | Yes | ID of the state the automaton moves to when the transition fires |
-| `IgnoreMinWait` | No | If `true`, bypasses the minimum wait interval between successive firings |
+| `IgnoreMinWait` | No | If `true`, the transition can fire without waiting for the min wait of the automaton. See [Min Wait and Ignore Min Wait](../designer/transitions/types.md#min-wait-and-ignore-min-wait). |
 
 ---
 
@@ -26,7 +26,7 @@ The standard transition. Fires when a metric value matches and/or clock constrai
   IdOutputState="Processing"
   MetricValue="confirmed"
   IgnoreMinWait="true">
-  <ClockConstraint ClockExp="clk_wait &lt; T_max_wait"/>
+  <ClockConstraint ClockExp="clk_wait &lt; this.GLOBALSTATE_maxWait"/>
   <ClockReset ClockVar="clk_wait"/>
 </Transition>
 ```
@@ -41,7 +41,7 @@ Child elements:
 
 | Element | Description |
 |---|---|
-| `<ClockConstraint ClockExp="..."/>` | A time-based condition. Multiple elements allowed. |
+| `<ClockConstraint ClockExp="..."/>` | A time-based condition. Multiple elements allowed: all must hold. See [Clock constraint syntax](global_state_clocks.md#clock-constraint-syntax). |
 | `<ClockReset ClockVar="..."/>` | Resets the specified clock when the transition fires. Multiple elements allowed. |
 
 ---
@@ -69,16 +69,20 @@ Additional attributes:
 
 | Attribute | Required | Description |
 |---|---|---|
-| `Path` | Yes | File name of the XAL file containing the target automaton |
+| `Path` | Yes | File name of the XAL file containing the target automaton. It can be the same file. |
 | `Type` | Yes | ID of the automaton to instantiate |
-| `MinWait` | No | Minimum delay in seconds before the child begins processing |
+| `MinWait` | No | The min wait of the child, in seconds: the minimum time it stays in each of its states. See [Min Wait and Ignore Min Wait](../designer/transitions/types.md#min-wait-and-ignore-min-wait). |
+
+`Path` and `Type` can also take the value of a global state variable, written as `this.GLOBALSTATE_<name>`: the file and the automaton are read from that variable when the transition fires.
 
 Child elements:
 
 | Element | Description |
 |---|---|
-| `<Input><Parameter .../></Input>` | Maps parent global state variables to child global state variables |
+| `<Input><Parameter .../></Input>` | Maps parent global state variables to child global state variables. See [Parameter Passing](parameters.md#input-parameters). |
 | `<ClockConstraint>`, `<ClockReset>` | Same as `Transition` |
+
+A `TransitionNew` has no `MetricValue`. When it is the only transition between two states, it always ignores the min wait of the parent, whatever `IgnoreMinWait` says. When a `Transition` joins the same two states, the interpreter merges them into one transition: the `MetricValue` and `IgnoreMinWait` come from the `Transition`, the clock constraints and resets from the `TransitionNew`. See [Transition Types](../designer/transitions/types.md).
 
 ---
 
@@ -106,13 +110,13 @@ Additional child elements:
 
 | Element | Description |
 |---|---|
-| `<LoopInput><Parameter .../></LoopInput>` | A single list variable from the parent's global state. One child is spawned per item. |
+| `<LoopInput><Parameter .../></LoopInput>` | Required. A single list variable from the parent's global state. One child is spawned per item. See [Loop input parameters](parameters.md#loop-input-parameters). |
 
 ---
 
 ## TransitionX
 
-An extended transition that combines features of `Transition` and `TransitionNew`. It supports both a `MetricValue` condition and the ability to spawn a child automaton through a `<New>` child element.
+An older form that combines features of `Transition` and `TransitionNew` in one element. It supports both a `MetricValue` condition and the ability to spawn a child automaton through a `<New>` child element. The interpreter still runs it, and the XAL Designer reads it, but you cannot create one from the designer (see [Transition Types](../designer/transitions/types.md#transitionx)).
 
 ```xml
 <TransitionX
@@ -137,6 +141,6 @@ Additional child elements:
 XML requires angle brackets to be escaped inside attribute values. Use `&lt;` for `<` and `&gt;` for `>` in `ClockExp` expressions:
 
 ```xml
-<ClockConstraint ClockExp="clk_retry &lt; T_max_wait"/>
-<ClockConstraint ClockExp="clk_auth &gt;= T_auth_timeout"/>
+<ClockConstraint ClockExp="clk_retry &lt; 10 min"/>
+<ClockConstraint ClockExp="clk_auth &gt;= this.GLOBALSTATE_authTimeout"/>
 ```

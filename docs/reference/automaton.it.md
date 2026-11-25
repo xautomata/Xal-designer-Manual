@@ -14,6 +14,8 @@ L'elemento `<Automaton>` è il contenitore di primo livello per la definizione d
 
 ## Elementi figlio
 
+Gli elementi figlio possono comparire in qualsiasi ordine (vedi [Struttura del file XAL](file_structure.md#ordine-di-elementi-e-attributi)).
+
 | Elemento | Obbligatorio | Descrizione |
 |---|---|---|
 | `<Functions>` | Sì | Contiene le definizioni di `<Action>` e `<Metric>`. Deve essere presente anche se vuoto. |
@@ -59,7 +61,7 @@ Un automa con due stati e una transizione:
 
 ## Più automi in un unico file
 
-Un singolo file XAL contiene comunemente una famiglia di automi correlati. L'automa padre referenzia i figli tramite il loro `Id` negli elementi `TransitionNew`, e i figli referenziano il padre attraverso le query delle metric.
+Un singolo file XAL contiene comunemente una famiglia di automi correlati. L'automa padre referenzia i figli tramite il loro `Id` negli elementi `TransitionNew`, o nelle action e metric con `Type="automaton"`, e i figli referenziano il padre attraverso le query delle metric.
 
 ```xml
 <XAL>

@@ -7,7 +7,7 @@ Le Metric sono definite all'interno dell'elemento `<Functions>` e rappresentano 
 ## Elemento Metric
 
 ```xml
-<Metric Id="checkPickingConfirmation" Type="object" MinWait="0">
+<Metric Id="checkPickingConfirmation" Type="object">
   <System
     Name="checkPickingConfirmation"
     Class="wms.WaterFallConnector"
@@ -38,8 +38,8 @@ Le Metric sono definite all'interno dell'elemento `<Functions>` e rappresentano 
 | Attributo | Obbligatorio | Descrizione |
 |---|---|---|
 | `Id` | Sì | Identificatore univoco all'interno di `<Functions>`. Referenziato dagli attributi `IdMetric` degli stati. |
-| `Type` | No | Contesto di esecuzione: `object` per le metric legate a oggetti monitorati, `automaton` per le metric che leggono direttamente altre istanze di automa. |
-| `MinWait` | No | Intervallo minimo in millisecondi tra valutazioni successive di questa metric. |
+| `Type` | No | Cosa esegue la metric: `object` per un metodo Java, `automaton` per un altro automa, come per le [action](actions.md#tipo-automaton). |
+| `MinWait` | No | Solo con `Type="automaton"`: il min wait, in secondi, dell'automa che la metric avvia. Sulle metric `object` l'interprete lo ignora. |
 
 ---
 
@@ -47,12 +47,12 @@ Le Metric sono definite all'interno dell'elemento `<Functions>` e rappresentano 
 
 ### `<System>`
 
-Specifica l'implementazione runtime.
+Indica cosa esegue la metric, come per le action (vedi [Actions](actions.md#system)).
 
 | Attributo | Descrizione |
 |---|---|
-| `Name` | Il nome del metodo da invocare |
-| `Class` | Il nome completo della classe |
+| `Name` | Il nome del metodo da invocare (con `Type="automaton"`, l'automa da avviare) |
+| `Class` | Il nome completo della classe (con `Type="automaton"`, il file XAL) |
 | `Path` | Il percorso del file di implementazione |
 
 ### `<Query>`
