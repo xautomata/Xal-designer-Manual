@@ -1,63 +1,77 @@
 # Transition Types
 
-The XAL Designer supports multiple transition types. The type determines what the transition does when it fires and what configuration fields are available.
+The type of a transition decides what it does when it fires and which fields its panel shows. The panel title shows the type.
+
+You do not choose the type from a list: on a new transition it follows the fields you fill in (see [Creating a Transition](creating.md#the-transition-type)).
 
 ---
 
 ## Transition
 
-The standard transition moves the automaton from one state to another when a condition is met.
+The standard transition moves the automaton from the input state to the output state.
 
-It supports:
+Its panel shows:
 
-- a **Metric Value** — the specific value returned by the input state's metric that triggers the transition
-- **Clock Constraints** — time-based conditions that must also be satisfied
-- **Clock Reset Variables** — clocks to reset when the transition fires
-- **Ignore Min Wait** — bypasses the minimum wait time, allowing the transition to fire immediately
+- **Metric Value**: the value the metric of the input state must return;
+- **Ignore Min Wait**: lets the transition fire without waiting for the min wait (see below);
+- **Clock Constraints** and **Clock Reset Variables**.
 
-If no conditions are configured, the transition fires unconditionally as soon as the automaton enters the input state.
+A transition without a Metric Value and without clock constraints fires as soon as the automaton is in the input state.
 
-On the canvas, standard transitions are displayed as **solid arrows**.
+See [Metric Value and Clocks](metric_clocks.md) for these fields.
 
 ---
 
 ## TransitionNew
 
-A TransitionNew spawns a new child automaton when it fires, in addition to moving the automaton to the output state.
+A TransitionNew starts a **child automaton** and moves the parent to the output state.
 
-It supports:
+Its panel shows:
 
-- **Target Automaton** — the automaton to instantiate (selected from the automata defined in the current file, or specified as a global state variable)
-- **Target Min Wait** — a minimum wait time before the child automaton begins processing
-- **Input Parameters** — values passed from the parent's global state to the child at the moment of instantiation
-- **Clock Constraints** and **Clock Reset Variables**
+- **Target File** and **Target Automaton**: the automaton to start;
+- **Target Min Wait**: the min wait of the child, in seconds (see below);
+- the **Input Parameter** rows: the values passed to the child when it starts;
+- **Clock Constraints** and **Clock Reset Variables**.
 
-On the canvas, TransitionNew edges are displayed as **dashed arrows**, and the label shows the name of the spawned automaton prefixed with a **+** symbol.
+A TransitionNew has no Metric Value: it fires on its clock constraints alone, and the min wait never delays it.
+
+See [Spawning Child Automata](transition_new.md) for the target and the parameters.
 
 !!! info
-    For a conceptual explanation of how parent and child automata interact, see [Automaton Families](../../concepts/families.md).
+    For how parent and child automata work together, see [Automaton Families](../../concepts/families.md).
 
 ---
 
 ## TransitionNewMulti
 
-TransitionNewMulti works like TransitionNew but spawns multiple child instances in a single operation, iterating over a list variable.
-
-It requires a **Loop Input** parameter in addition to the standard input parameters — a single variable from the global state that contains the list of items to iterate over.
+A TransitionNewMulti works like a TransitionNew, but starts **one child for each item of a list**. The list is a Global State of the parent, chosen in the loop row of **Input Parameter**.
 
 ---
 
 ## TransitionX
 
-TransitionX is an extended transition type that combines features from all other types. It is used for advanced scenarios that require both spawning a child automaton and matching a metric value on the same transition.
+TransitionX is an older form that puts a transition and the start of a child in one element. The interpreter still runs it, and the designer draws it as a plain arrow, but **you cannot create one** from the designer.
+
+To get the same behavior, draw a Transition and a TransitionNew between the same two states. At run time they become a single transition: it fires on the Metric Value of the Transition, and uses the clock constraints and resets of the TransitionNew.
 
 ---
 
-## Identifying transition types on the canvas
+## Min Wait and Ignore Min Wait
+
+The **min wait** is the time, in seconds, an automaton must spend in a state before it can leave it. It is set by whoever starts the automaton: for a child automaton, it is the **Target Min Wait** of the TransitionNew that started it. With no min wait, or 0, nothing is delayed.
+
+**Ignore Min Wait** exempts one transition from it: the transition can fire as soon as its conditions hold.
+
+---
+
+## Transition types on the canvas
 
 | Appearance | Type |
 |---|---|
 | Solid arrow | Transition |
-| Dashed arrow with **+** label | TransitionNew or TransitionNewMulti |
-| Label showing metric value | Any type with a Metric Value condition |
-| Label showing clock expression | Any type with a Clock Constraint |
+| Dashed arrow, no ✚ | Transition with **Ignore Min Wait** on |
+| Dashed arrow, label **✚** and the target automaton | TransitionNew |
+| Dashed arrow, label **✚✚** and the target automaton | TransitionNewMulti |
+| Solid arrow, no label | TransitionX |
+
+The label of a Transition shows its Metric Value, plus a clock symbol for a clock constraint and **↺** for a clock reset. Hover an arrow to see the details.

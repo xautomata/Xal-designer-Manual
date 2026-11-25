@@ -1,50 +1,63 @@
 # Metric Value e Clock
 
-I campi **Metric Value** e **Clocks** nel pannello della transizione controllano quando una transizione scatta. Possono essere usati in modo indipendente o in combinazione.
+Il campo **Metric Value** e la sezione **Clocks** del pannello della transizione decidono quando una transizione scatta. Puoi usarli da soli o insieme.
+
+![Sezione Clocks di una transizione](../../images/designer/transitions/clock_constraints.png)
+/// caption
+Fig.1 - Un self-loop su exception: Metric Value, Ignore Min Wait e un vincolo Clock
+///
 
 ---
 
 ## Metric Value
 
-Il campo **Metric Value** specifica il valore che la Metric dello stato di input deve restituire affinché la transizione scatti.
+Il **Metric Value** è il valore che la Metric dello stato di input deve restituire perché la transizione scatti. C'è sulle Transition, non sulle TransitionNew.
 
-Seleziona un valore dal menu a discesa. Le opzioni disponibili sono tratte dall'enumerazione definita sulla Metric associata allo stato di input. Se lo stato di input non ha una Metric, o la sua Metric non ha valori di enumerazione, il menu a discesa sarà vuoto.
+Sceglilo dalla lista. Le opzioni sono i valori dichiarati sulla Metric dello stato di input (vedi [Configurare le Metric degli stati](../states/metrics.md)). Se lo stato di input non ha una Metric, o la sua Metric non dichiara valori, la lista è vuota.
 
-Se non è impostato alcun Metric Value, la transizione scatta indipendentemente dal valore corrente della Metric — purché siano soddisfatti anche gli eventuali vincoli Clock.
+Senza Metric Value la transizione non guarda la Metric: scatta appena i suoi vincoli Clock sono soddisfatti.
 
 !!! warning
-    Solo una transizione dallo stesso stato di input può avere la stessa combinazione di Metric Value e Clock Constraint. Se tenti di configurare un duplicato, il pannello mostrerà un errore **"Metric value already in use"**.
+    Due transizioni dallo stesso stato di input non possono avere lo stesso Metric Value e gli stessi vincoli Clock: l'automa non saprebbe quale prendere. In quel caso il campo mostra **Metric value already in use**.
 
 ---
 
-## Clock Constraint
+## Vincoli Clock
 
-La sezione **Clocks** consente di aggiungere condizioni basate sul tempo alla transizione.
+Un vincolo Clock fa aspettare la transizione per un certo tempo, o smettere di aspettare dopo un certo tempo. Confronta un Clock dell'automa con un valore: `waitClock >= 5 min` è vero quando sono passati cinque minuti dall'ultimo azzeramento di `waitClock`.
 
-Per aggiungere un vincolo, seleziona una **Clock Variable**, un **Operator** (`<`, `<=`, `>`, `>=`), un **Value** e un'**Unit**. Il vincolo viene visualizzato come espressione del tipo `clk_retry >= 5 min`.
+Per aggiungerne uno, nella sezione **Clocks**:
 
-Una transizione può avere più vincoli Clock. Tutti i vincoli devono essere soddisfatti simultaneamente affinché la transizione scatti.
+1. scegli la **Clock Variable**: i Clock dell'automa (vedi [Variabili Clock](../automata/clocks.md));
+2. scegli l'**Operator**: `<`, `<=`, `>` o `>=`;
+3. in **Value** scrivi un numero intero, oppure scegli un Global State dell'automa per confrontare con il suo valore;
+4. se vuoi, scegli la **Unit**: `sec`, `min` o `hour`. Senza unità il valore è in secondi;
+5. clicca **+**.
 
-Per rimuovere un vincolo, fai clic sull'icona **×** accanto ad esso.
+Il pulsante **+** resta disattivato finché Clock, operatore e valore non sono impostati. Un valore che non è né un numero né un Global State mostra **Value must be a number or a global state**.
+
+Il vincolo compare sotto come chip; se contiene un Global State ne mostra l'icona. Per togliere un vincolo, clicca **×** sul suo chip.
+
+Una transizione può avere più vincoli Clock: devono essere tutti soddisfatti nello stesso momento.
 
 ---
 
 ## Clock Reset Variables
 
-Usa il campo **Clock Reset Variables** per selezionare uno o più Clock da azzerare quando la transizione scatta.
+**Clock Reset Variables** elenca i Clock da far ripartire da zero quando la transizione scatta. Scegli uno o più Clock dell'automa; ognuno compare come un'etichetta che puoi togliere.
 
-Fai clic sul menu a discesa per vedere tutti i Clock definiti per l'automa corrente e seleziona quelli da azzerare. Ogni Clock selezionato viene mostrato come tag che può essere rimosso singolarmente.
+Azzera un Clock sulla transizione che entra nella fase di attesa, e mettilo nei vincoli delle transizioni che ne escono.
 
 ---
 
 ## Ignore Min Wait
 
-Il toggle **Ignore Min Wait** bypassa l'intervallo minimo di attesa applicato tra successive attivazioni della stessa transizione. Abilitalo quando la transizione deve reagire immediatamente a un cambiamento, senza alcun ritardo.
+L'interruttore **Ignore Min Wait** fa scattare la transizione senza aspettare il min wait dell'automa. Vedi [Min Wait e Ignore Min Wait](types.md#min-wait-e-ignore-min-wait).
 
 ---
 
 ## Combinare le condizioni
 
-Metric Value e Clock Constraint possono essere usati insieme sulla stessa transizione. In quel caso, entrambe le condizioni devono essere vere simultaneamente affinché la transizione scatti — la Metric deve aver restituito il valore specificato e tutti i vincoli Clock devono essere soddisfatti.
+Quando una transizione ha sia un Metric Value sia dei vincoli Clock, devono valere entrambi: la Metric ha restituito quel valore e tutti i vincoli sono soddisfatti.
 
-Questa combinazione è comunemente usata per implementare l'escalation per timeout: una transizione gestisce il caso normale (il valore Metric corrisponde, il Clock è nei limiti) e un'altra gestisce il caso di timeout (stesso valore Metric, Clock superato).
+Uno schema comune è il timeout: una transizione gestisce il valore atteso, un'altra lascia lo stato quando un Clock supera un limite. In Fig.1 il self-loop su **exception** scatta solo quando la Metric restituisce `dispatchingAlive` e `waitClock` ha raggiunto i cinque minuti.

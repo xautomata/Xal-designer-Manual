@@ -45,7 +45,7 @@ Il titolo del pannello mostra il tipo della transizione. Su una transizione nuov
 - **TransitionNew**: hai impostato un **Target File** e un **Target Automaton** nella sezione Parameters.
 - **TransitionNewMulti**: hai impostato anche le variabili di loop.
 
-Per una descrizione completa di ogni tipo e di quando usarlo, vedi [Transition Types](types.md).
+Per una descrizione completa di ogni tipo e di quando usarlo, vedi [Tipi di transizione](types.md).
 
 ---
 

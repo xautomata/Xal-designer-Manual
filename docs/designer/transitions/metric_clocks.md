@@ -1,50 +1,63 @@
 # Metric Value and Clocks
 
-The **Metric Value** and **Clocks** fields in the transition panel control when a transition fires. They can be used independently or in combination.
+The **Metric Value** field and the **Clocks** section of the transition panel decide when a transition fires. You can use them alone or together.
+
+![Clocks section of a transition](../../images/designer/transitions/clock_constraints.png)
+/// caption
+Fig.1 - A self-loop on exception: Metric Value, Ignore Min Wait and a clock constraint
+///
 
 ---
 
 ## Metric Value
 
-The **Metric Value** field specifies the value that the input state's metric must return for the transition to fire.
+The **Metric Value** is the value the metric of the input state must return for the transition to fire. It is available on a Transition, not on a TransitionNew.
 
-Select a value from the dropdown. The available options are drawn from the enumeration defined on the metric associated with the input state. If the input state has no metric, or its metric has no enumeration values, the dropdown will be empty.
+Choose it from the list. The options are the values declared on the metric of the input state (see [Configuring State Metrics](../states/metrics.md)). If the input state has no metric, or its metric declares no values, the list is empty.
 
-If no Metric Value is set, the transition fires regardless of the metric's current value — as long as any clock constraints are also satisfied.
+Without a Metric Value, the transition does not look at the metric: it fires as soon as its clock constraints hold.
 
 !!! warning
-    Only one transition from the same input state can have the same combination of Metric Value and Clock Constraints. If you try to configure a duplicate, the panel will display a **"Metric value already in use"** error.
+    Two transitions from the same input state cannot have the same Metric Value and the same clock constraints: the automaton could not tell which one to take. In that case the field shows **Metric value already in use**.
 
 ---
 
-## Clock Constraints
+## Clock constraints
 
-The **Clocks** section lets you add time-based conditions to the transition.
+A clock constraint makes the transition wait for, or stop waiting after, a given time. It compares a clock of the automaton with a value: `waitClock >= 5 min` holds once five minutes have passed since `waitClock` was last reset.
 
-To add a constraint, select a **Clock Variable**, an **Operator** (`<`, `<=`, `>`, `>=`), a **Value**, and a **Unit**. The constraint is displayed as an expression such as `clk_retry >= 5 min`.
+To add one, in the **Clocks** section:
 
-A transition can have multiple clock constraints. All constraints must be satisfied simultaneously for the transition to fire.
+1. choose the **Clock Variable**: the clocks of the automaton (see [Clock Variables](../automata/clocks.md));
+2. choose the **Operator**: `<`, `<=`, `>` or `>=`;
+3. in **Value**, type a whole number, or choose a Global State of the automaton to compare with its value;
+4. optionally choose the **Unit**: `sec`, `min` or `hour`. Without a unit, the value is in seconds;
+5. click **+**.
 
-To remove a constraint, click the **×** icon next to it.
+The **+** button stays disabled until clock, operator and value are set. A value that is neither a number nor a Global State shows **Value must be a number or a global state**.
+
+The constraint appears below as a chip; a Global State in it shows its icon. To remove a constraint, click **×** on its chip.
+
+A transition can have several clock constraints: all of them must hold at the same time.
 
 ---
 
 ## Clock Reset Variables
 
-Use the **Clock Reset Variables** field to select one or more clocks that should be reset when the transition fires.
+**Clock Reset Variables** lists the clocks to restart from zero when the transition fires. Choose one or more clocks of the automaton; each one appears as a tag you can remove.
 
-Click the dropdown to see all clocks defined for the current automaton and select the ones to reset. Each selected clock is shown as a tag that can be removed individually.
+Reset a clock on the transition that enters the waiting phase, and constrain it on the transitions that leave it.
 
 ---
 
 ## Ignore Min Wait
 
-The **Ignore Min Wait** toggle bypasses the minimum wait interval enforced between successive firings of the same transition. Enable it when the transition must react immediately to a change, without any delay.
+The **Ignore Min Wait** switch lets the transition fire without waiting for the min wait of the automaton. See [Min Wait and Ignore Min Wait](types.md#min-wait-and-ignore-min-wait).
 
 ---
 
 ## Combining conditions
 
-Metric Value and Clock Constraints can be used together on the same transition. In that case, both conditions must be true simultaneously for the transition to fire — the metric must have returned the specified value, and all clock constraints must be satisfied.
+When a transition has both a Metric Value and clock constraints, both must hold: the metric has returned that value, and all constraints are met.
 
-This combination is commonly used to implement timeout escalation: one transition handles the normal case (metric value matches, clock within bounds), and another handles the timeout case (same metric value, clock exceeded).
+A common pattern is the timeout: one transition handles the expected value, another leaves the state when a clock exceeds a limit. In Fig.1 the self-loop on **exception** fires only when the metric returns `dispatchingAlive` and `waitClock` has reached five minutes.
