@@ -1,42 +1,46 @@
 # Aprire un Automa
 
-È possibile aprire un automa per la modifica da due punti: il grafico del Process Overview e il Repository Explorer.
+È possibile aprire un automa per la modifica da due punti: il grafico del Process Overview e l'Explorer.
 
 ---
 
 ## Dal Process Overview
 
-Il tab Overview mostra il grafico delle correlazioni di tutti gli automi nel repository.
+Il tab Overview mostra il grafico delle correlazioni di tutti gli automi dei file caricati.
 
-**Doppio clic** su qualsiasi nodo del grafico per aprire l'automa corrispondente nel canvas. Appare come nuovo tab nella barra dei tab.
+**Doppio clic** su un nodo del grafico per aprire l'automa corrispondente nel canvas. Appare come nuovo tab nella barra dei tab. Non serve che l'Explorer sia aperto.
 
 Un singolo clic su un nodo evidenzia solo le sue connessioni — non apre l'automa. Assicurati di fare doppio clic.
 
 !!! note
-    I nodi che rappresentano automi in repository esterni (mostrati con un bordo rosso) non possono essere aperti direttamente dall'Overview, poiché i loro file sorgente non fanno parte del repository corrente.
+    Si possono aprire solo i rettangoli arrotondati. Le nuvole (automi il cui file non è tra quelli caricati) e le ellissi (automi scelti da una variabile di stato globale) non hanno un file da aprire. Vedi [Forme dei nodi](reading.md#forme-dei-nodi).
 
 ---
 
-## Dal Repository Explorer
+## Dall'Explorer
 
-Fai clic sull'**icona file** nella barra laterale sinistra per aprire il Repository Explorer.
+Fai clic su **File** (icona ad albero) nella barra laterale sinistra per aprire l'Explorer.
 
-L'explorer mostra la struttura delle cartelle del repository collegato. I file XAL possono essere espansi per mostrare gli automi che contengono. Ogni automa è elencato sotto il suo file con un'icona robot.
+L'Explorer mostra la struttura delle cartelle del repository collegato e i file che hai caricato. Fai clic su un file XAL per espanderlo e mostrare gli automi che contiene. Ogni automa è elencato sotto il suo file con l'icona di un grafo.
 
-Fai clic sul nome di un automa per aprirlo nel canvas.
+Fai clic sul nome di un automa per aprirlo nel canvas. Se il suo tab è già aperto ma non attivo, il clic passa a quel tab. Se il suo tab è quello attivo, il clic chiude il tab.
 
-![Repository Explorer con lista automi](../../images/designer/overview_graph/repo_explorer_expanded.png)
+Un automa che hai eliminato e non hai ancora committato resta nell'Explorer fino al commit, ma non si può aprire.
+
+![Explorer con la lista degli automi](../../images/designer/getting_started/repo_explorer.png)
 /// caption
-Fig.1 - Un file XAL espanso nel Repository Explorer che mostra i suoi automi
+Fig.1 - Un file XAL espanso nell'Explorer che mostra i suoi automi
 ///
 
 ---
 
 ## Lavorare con più automi
 
-Ogni automa aperto appare come tab separato. È possibile avere più automi aperti contemporaneamente e passare liberamente dall'uno all'altro facendo clic sui rispettivi tab.
+Ogni automa aperto appare come tab separato. Puoi avere più automi aperti contemporaneamente e passare dall'uno all'altro facendo clic sui rispettivi tab.
 
-Aprire lo stesso automa una seconda volta sposta il focus sul tab esistente anziché aprire un duplicato.
+Aprire lo stesso automa una seconda volta passa al tab esistente anziché aprire un duplicato.
+
+Per spostare, chiudere e gestire i tab, vedi [Tab](../getting_started/interface.md#tab).
 
 ---
 
